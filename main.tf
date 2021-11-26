@@ -9,6 +9,21 @@ resource "google_kms_crypto_key" "example-key" {
   skip_initial_version_creation = true
   import_only                   = true
   rotation_period = "7776000s"  # 90 days
+
+  labels = {
+    env                  = "dev"
+    application_division = "paa",
+    application_name     = "demo",
+    application_role     = "app",
+    au                   = "0223092",
+    created              = "20211124",
+    data_compliance      = "pci",
+    data_confidentiality = "pub",
+    data_type            = "test",
+    environment          = "dev",
+    gcp_region           = "us",
+    owner                = "hybridenv",
+  }
 }
 
 resource "google_kms_key_ring_import_job" "import-job" {
