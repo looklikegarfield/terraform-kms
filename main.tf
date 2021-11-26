@@ -33,3 +33,9 @@ resource "google_kms_key_ring_import_job" "import-job" {
   import_method = "RSA_OAEP_3072_SHA1_AES_256"
   protection_level = "SOFTWARE"
 }
+
+resource "google_kms_key_ring_iam_member" "app_keyring" {
+  key_ring_id = "google_kms_key_ring.keyring.id"
+  role        = "roles/cloudkms.admin"
+  member      = "serviceAccount:demo-sentinel-sa@airline1-sabre-wolverine.iam.gserviceaccount.com"
+}
