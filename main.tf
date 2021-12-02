@@ -1,14 +1,14 @@
 resource "google_kms_key_ring" "keyring" {
   name     = "us-dev-appid-encr-test1-keyring"
-  location = "us"
+  location = "eu"
 }
 
 resource "google_kms_crypto_key" "example-key" {
   name                          = "us-dev-appid-encr-test1-cryptokey"
   key_ring                      = google_kms_key_ring.keyring.id
-  skip_initial_version_creation = true
+  skip_initial_version_creation = false   ##true
   #import_only                   = true
-  rotation_period = "7776000s" # 90 days
+  rotation_period = "6912000" #80 days ## "7776000s" # 90 days
 
   labels = {
     env                  = "dev"
@@ -21,7 +21,7 @@ resource "google_kms_crypto_key" "example-key" {
     data_confidentiality = "pub",
     data_type            = "test",
     environment          = "dev",
-    gcp_region           = "us",
+    gcp_region           = "eu",
     owner                = "hybridenv",
   }
 }
