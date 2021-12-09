@@ -51,6 +51,20 @@ resource "google_kms_crypto_key" "example-key" {
   name                          = var.keyring_key_name
   key_ring                      = google_kms_key_ring.keyring.id
   skip_initial_version_creation = true
+  labels = {
+    env                  = "dev"
+    application_division = "paa",
+    application_name     = "demo",
+    application_role     = "app",
+    au                   = "0223092",
+    created              = "20211124",
+    data_compliance      = "pci",
+    data_confidentiality = "pub",
+    data_type            = "test",
+    environment          = "dev",
+    gcp_region           = "eu",
+    owner                = "hybridenv",
+  }
 }
 
 resource "google_kms_key_ring_import_job" "import-job" {
