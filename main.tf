@@ -70,7 +70,7 @@ resource "google_kms_crypto_key" "example-key" {
 }
 
 resource "google_kms_key_ring_import_job" "import-job" {
-  key_ring      = google_kms_key_ring.keyring.id
+  key_ring      = data.google_kms_key_ring.keyring.id
   import_job_id = var.keyring_import_job
 
   import_method    = "RSA_OAEP_3072_SHA1_AES_256"
