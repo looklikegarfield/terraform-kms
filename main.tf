@@ -41,11 +41,11 @@
 ##}
 #
 
-resource "google_kms_key_ring" "keyring" {
-  project  = var.project
-  name     = var.keyring_name
-  location = var.keyring_location
-}
+#resource "google_kms_key_ring" "keyring" {
+#  project  = var.project
+#  name     = var.keyring_name
+#  location = var.keyring_location
+#}
 
 resource "google_kms_crypto_key" "example-key" {
   name                          = var.keyring_key_name
