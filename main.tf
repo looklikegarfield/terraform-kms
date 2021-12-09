@@ -51,6 +51,8 @@ resource "google_kms_crypto_key" "example-key" {
   name                          = var.keyring_key_name
   key_ring                      = google_kms_key_ring.keyring.id
   skip_initial_version_creation = true
+  import_only                   = true
+  rotation_period = "7776000s" # 90 days
   labels = {
     env                  = "dev"
     application_division = "paa",
