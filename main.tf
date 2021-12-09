@@ -52,7 +52,7 @@ resource "google_kms_crypto_key" "example-key" {
   key_ring                      = data.google_kms_key_ring.keyring.id
   skip_initial_version_creation = true
   import_only                   = true
-  rotation_period = "7776000s" # 90 days
+  #rotation_period = "7776000s" # 90 days
   labels = {
     env                  = "dev"
     application_division = "paa",
