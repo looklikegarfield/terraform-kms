@@ -62,7 +62,7 @@ resource "google_kms_crypto_key" "example-key" {
     data_confidentiality = "pub",
     data_type            = "test",
     environment          = "dev",
-    gcp_region           = "eu",
+    gcp_region           = "us",
     owner                = "hybridenv",
   }
 }
