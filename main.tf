@@ -49,7 +49,7 @@ resource "google_kms_key_ring" "keyring" {
 
 resource "google_kms_crypto_key" "example-key" {
   name                          = var.keyring_key_name
-  key_ring                      = google_kms_key_ring.keyring.id
+  key_ring                      = data.google_kms_key_ring.keyring.id
   skip_initial_version_creation = true
   import_only                   = true
   rotation_period = "7776000s" # 90 days
@@ -77,6 +77,10 @@ resource "google_kms_key_ring_import_job" "import-job" {
   protection_level = "SOFTWARE"
 }
 
+data "google_kms_key_ring" "keyring" {
+  name     = var.keyring_name
+  location = var.keyring_location
+}
 
 resource "null_resource" "proto_descriptor" {
   provisioner "local-exec" {

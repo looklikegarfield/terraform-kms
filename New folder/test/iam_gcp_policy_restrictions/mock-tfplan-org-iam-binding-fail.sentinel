@@ -1,0 +1,865 @@
+terraform_version = "1.0.9"
+
+planned_values = {
+	"outputs": {},
+	"resources": {
+		"google_organization_iam_binding.organization-binding": {
+			"address":        "google_organization_iam_binding.organization-binding",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "organization-binding",
+			"provider_name":  "registry.terraform.io/hashicorp/google",
+			"tainted":        false,
+			"type":           "google_organization_iam_binding",
+			"values": {
+				"condition": [],
+				"members": [
+					"serviceAccount:407536364561-compute@developer.gserviceaccount.com",
+				],
+				"org_id": "airline1",
+				"role":   "roles/editor",
+			},
+		},
+		"google_organization_iam_member.organization-member": {
+			"address":        "google_organization_iam_member.organization-member",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "organization-member",
+			"provider_name":  "registry.terraform.io/hashicorp/google",
+			"tainted":        false,
+			"type":           "google_organization_iam_member",
+			"values": {
+				"condition": [],
+				"member":    "group:rajeevgroup@googlegroup.com",
+				"org_id":    "airline1",
+				"role":      "roles/editor",
+			},
+		},
+		"google_organization_iam_policy.organization": {
+			"address":        "google_organization_iam_policy.organization",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "organization",
+			"provider_name":  "registry.terraform.io/hashicorp/google",
+			"tainted":        false,
+			"type":           "google_organization_iam_policy",
+			"values": {
+				"org_id":      "airline1",
+				"policy_data": "{\"bindings\":[{\"members\":[\"group:rajeevgroup@googlegroup.com\",\"serviceAccount:407536364561-compute@developer.gserviceaccount.com\"],\"role\":\"roles/editor\"}]}",
+			},
+		},
+		"google_project_iam_binding.project-binding": {
+			"address":        "google_project_iam_binding.project-binding",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "project-binding",
+			"provider_name":  "registry.terraform.io/hashicorp/google",
+			"tainted":        false,
+			"type":           "google_project_iam_binding",
+			"values": {
+				"condition": [],
+				"members": [
+					"group:rajeevgroup@googlegroup.com",
+					"serviceAccount:407536364561-compute@developer.gserviceaccount.com",
+				],
+				"project": "test-project",
+				"role":    "roles/editor",
+			},
+		},
+		"google_project_iam_member.project-iam-member": {
+			"address":        "google_project_iam_member.project-iam-member",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "project-iam-member",
+			"provider_name":  "registry.terraform.io/hashicorp/google",
+			"tainted":        false,
+			"type":           "google_project_iam_member",
+			"values": {
+				"condition": [],
+				"member":    "group:rajeevgroup@googlegroup.com",
+				"project":   "test-project",
+				"role":      "roles/editor",
+			},
+		},
+		"google_project_iam_policy.project": {
+			"address":        "google_project_iam_policy.project",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "project",
+			"provider_name":  "registry.terraform.io/hashicorp/google",
+			"tainted":        false,
+			"type":           "google_project_iam_policy",
+			"values": {
+				"policy_data": "{\"bindings\":[{\"members\":[\"group:rajeevgroup@googlegroup.com\",\"serviceAccount:407536364561-compute@developer.gserviceaccount.com\"],\"role\":\"roles/editor\"}]}",
+				"project":     "test-project",
+			},
+		},
+	},
+}
+
+variables = {
+	"access_token": {
+		"name":  "access_token",
+		"value": "REDACTED_SENSITIVE",
+	},
+}
+
+resource_changes = {
+	"google_organization_iam_binding.organization-binding": {
+		"address": "google_organization_iam_binding.organization-binding",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"condition": [],
+				"members": [
+					"serviceAccount:407536364561-compute@developer.gserviceaccount.com",
+					"user:abhi@gmail.com",
+				],
+				"org_id": "airline1",
+				"role":   "roles/editor",
+			},
+			"after_unknown": {
+				"condition": [],
+				"etag":      true,
+				"id":        true,
+				"members": [
+					false,
+				],
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "organization-binding",
+		"provider_name":  "registry.terraform.io/hashicorp/google",
+		"type":           "google_organization_iam_binding",
+	},
+	"google_organization_iam_member.organization-member": {
+		"address": "google_organization_iam_member.organization-member",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"condition": [],
+				"member":    "group:rajeevgroup@googlegroup.com",
+				"org_id":    "airline1",
+				"role":      "roles/editor",
+			},
+			"after_unknown": {
+				"condition": [],
+				"etag":      true,
+				"id":        true,
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "organization-member",
+		"provider_name":  "registry.terraform.io/hashicorp/google",
+		"type":           "google_organization_iam_member",
+	},
+	"google_organization_iam_policy.organization": {
+		"address": "google_organization_iam_policy.organization",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"org_id":      "airline1",
+				"policy_data": "{\"bindings\":[{\"members\":[\"group:rajeevgroup@googlegroup.com\",\"serviceAccount:407536364561-compute@developer.gserviceaccount.com\"],\"role\":\"roles/editor\"}]}",
+			},
+			"after_unknown": {
+				"etag": true,
+				"id":   true,
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "organization",
+		"provider_name":  "registry.terraform.io/hashicorp/google",
+		"type":           "google_organization_iam_policy",
+	},
+	"google_project_iam_binding.project-binding": {
+		"address": "google_project_iam_binding.project-binding",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"condition": [],
+				"members": [
+					"group:rajeevgroup@googlegroup.com",
+					"serviceAccount:407536364561-compute@developer.gserviceaccount.com",
+				],
+				"project": "test-project",
+				"role":    "roles/editor",
+			},
+			"after_unknown": {
+				"condition": [],
+				"etag":      true,
+				"id":        true,
+				"members": [
+					false,
+					false,
+				],
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "project-binding",
+		"provider_name":  "registry.terraform.io/hashicorp/google",
+		"type":           "google_project_iam_binding",
+	},
+	"google_project_iam_member.project-iam-member": {
+		"address": "google_project_iam_member.project-iam-member",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"condition": [],
+				"member":    "group:rajeevgroup@googlegroup.com",
+				"project":   "test-project",
+				"role":      "roles/editor",
+			},
+			"after_unknown": {
+				"condition": [],
+				"etag":      true,
+				"id":        true,
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "project-iam-member",
+		"provider_name":  "registry.terraform.io/hashicorp/google",
+		"type":           "google_project_iam_member",
+	},
+	"google_project_iam_policy.project": {
+		"address": "google_project_iam_policy.project",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"policy_data": "{\"bindings\":[{\"members\":[\"group:rajeevgroup@googlegroup.com\",\"serviceAccount:407536364561-compute@developer.gserviceaccount.com\"],\"role\":\"roles/editor\"}]}",
+				"project":     "test-project",
+			},
+			"after_unknown": {
+				"etag": true,
+				"id":   true,
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "project",
+		"provider_name":  "registry.terraform.io/hashicorp/google",
+		"type":           "google_project_iam_policy",
+	},
+}
+
+output_changes = {}
+
+raw = {
+	"configuration": {
+		"provider_config": {
+			"google": {
+				"expressions": {
+					"access_token": {
+						"references": [
+							"var.access_token",
+						],
+					},
+				},
+				"name": "google",
+			},
+		},
+		"root_module": {
+			"resources": [
+				{
+					"address": "google_organization_iam_binding.organization-binding",
+					"expressions": {
+						"members": {
+							"constant_value": [
+								"serviceAccount:407536364561-compute@developer.gserviceaccount.com",
+							],
+						},
+						"org_id": {
+							"constant_value": "airline1",
+						},
+						"role": {
+							"constant_value": "roles/editor",
+						},
+					},
+					"mode":                "managed",
+					"name":                "organization-binding",
+					"provider_config_key": "google",
+					"schema_version":      0,
+					"type":                "google_organization_iam_binding",
+				},
+				{
+					"address": "google_organization_iam_member.organization-member",
+					"expressions": {
+						"member": {
+							"constant_value": "group:rajeevgroup@googlegroup.com",
+						},
+						"org_id": {
+							"constant_value": "airline1",
+						},
+						"role": {
+							"constant_value": "roles/editor",
+						},
+					},
+					"mode":                "managed",
+					"name":                "organization-member",
+					"provider_config_key": "google",
+					"schema_version":      0,
+					"type":                "google_organization_iam_member",
+				},
+				{
+					"address": "google_organization_iam_policy.organization",
+					"expressions": {
+						"org_id": {
+							"constant_value": "airline1",
+						},
+						"policy_data": {
+							"references": [
+								"data.google_iam_policy.admin.policy_data",
+								"data.google_iam_policy.admin",
+							],
+						},
+					},
+					"mode":                "managed",
+					"name":                "organization",
+					"provider_config_key": "google",
+					"schema_version":      0,
+					"type":                "google_organization_iam_policy",
+				},
+				{
+					"address": "google_project_iam_binding.project-binding",
+					"expressions": {
+						"members": {
+							"constant_value": [
+								"group:rajeevgroup@googlegroup.com",
+								"serviceAccount:407536364561-compute@developer.gserviceaccount.com",
+							],
+						},
+						"project": {
+							"constant_value": "test-project",
+						},
+						"role": {
+							"constant_value": "roles/editor",
+						},
+					},
+					"mode":                "managed",
+					"name":                "project-binding",
+					"provider_config_key": "google",
+					"schema_version":      0,
+					"type":                "google_project_iam_binding",
+				},
+				{
+					"address": "google_project_iam_member.project-iam-member",
+					"expressions": {
+						"member": {
+							"constant_value": "group:rajeevgroup@googlegroup.com",
+						},
+						"project": {
+							"constant_value": "test-project",
+						},
+						"role": {
+							"constant_value": "roles/editor",
+						},
+					},
+					"mode":                "managed",
+					"name":                "project-iam-member",
+					"provider_config_key": "google",
+					"schema_version":      0,
+					"type":                "google_project_iam_member",
+				},
+				{
+					"address": "google_project_iam_policy.project",
+					"expressions": {
+						"policy_data": {
+							"references": [
+								"data.google_iam_policy.admin-project.policy_data",
+								"data.google_iam_policy.admin-project",
+							],
+						},
+						"project": {
+							"constant_value": "test-project",
+						},
+					},
+					"mode":                "managed",
+					"name":                "project",
+					"provider_config_key": "google",
+					"schema_version":      0,
+					"type":                "google_project_iam_policy",
+				},
+				{
+					"address": "data.google_iam_policy.admin",
+					"expressions": {
+						"binding": [
+							{
+								"members": {
+									"constant_value": [
+										"group:rajeevgroup@googlegroup.com",
+										"serviceAccount:407536364561-compute@developer.gserviceaccount.com",
+									],
+								},
+								"role": {
+									"constant_value": "roles/editor",
+								},
+							},
+						],
+					},
+					"mode":                "data",
+					"name":                "admin",
+					"provider_config_key": "google",
+					"schema_version":      0,
+					"type":                "google_iam_policy",
+				},
+				{
+					"address": "data.google_iam_policy.admin-project",
+					"expressions": {
+						"binding": [
+							{
+								"members": {
+									"constant_value": [
+										"group:rajeevgroup@googlegroup.com",
+										"serviceAccount:407536364561-compute@developer.gserviceaccount.com",
+									],
+								},
+								"role": {
+									"constant_value": "roles/editor",
+								},
+							},
+						],
+					},
+					"mode":                "data",
+					"name":                "admin-project",
+					"provider_config_key": "google",
+					"schema_version":      0,
+					"type":                "google_iam_policy",
+				},
+			],
+			"variables": {
+				"access_token": {
+					"description": "access token",
+					"sensitive":   true,
+				},
+			},
+		},
+	},
+	"format_version": "0.2",
+	"planned_values": {
+		"root_module": {
+			"resources": [
+				{
+					"address":        "google_organization_iam_binding.organization-binding",
+					"mode":           "managed",
+					"name":           "organization-binding",
+					"provider_name":  "registry.terraform.io/hashicorp/google",
+					"schema_version": 0,
+					"sensitive_values": {
+						"condition": [],
+						"members": [
+							false,
+						],
+					},
+					"type": "google_organization_iam_binding",
+					"values": {
+						"condition": [],
+						"members": [
+							"serviceAccount:407536364561-compute@developer.gserviceaccount.com",
+						],
+						"org_id": "airline1",
+						"role":   "roles/editor",
+					},
+				},
+				{
+					"address":        "google_organization_iam_member.organization-member",
+					"mode":           "managed",
+					"name":           "organization-member",
+					"provider_name":  "registry.terraform.io/hashicorp/google",
+					"schema_version": 0,
+					"sensitive_values": {
+						"condition": [],
+					},
+					"type": "google_organization_iam_member",
+					"values": {
+						"condition": [],
+						"member":    "group:rajeevgroup@googlegroup.com",
+						"org_id":    "airline1",
+						"role":      "roles/editor",
+					},
+				},
+				{
+					"address":          "google_organization_iam_policy.organization",
+					"mode":             "managed",
+					"name":             "organization",
+					"provider_name":    "registry.terraform.io/hashicorp/google",
+					"schema_version":   0,
+					"sensitive_values": {},
+					"type":             "google_organization_iam_policy",
+					"values": {
+						"org_id":      "airline1",
+						"policy_data": "{\"bindings\":[{\"members\":[\"group:rajeevgroup@googlegroup.com\",\"serviceAccount:407536364561-compute@developer.gserviceaccount.com\"],\"role\":\"roles/editor\"}]}",
+					},
+				},
+				{
+					"address":        "google_project_iam_binding.project-binding",
+					"mode":           "managed",
+					"name":           "project-binding",
+					"provider_name":  "registry.terraform.io/hashicorp/google",
+					"schema_version": 0,
+					"sensitive_values": {
+						"condition": [],
+						"members": [
+							false,
+							false,
+						],
+					},
+					"type": "google_project_iam_binding",
+					"values": {
+						"condition": [],
+						"members": [
+							"group:rajeevgroup@googlegroup.com",
+							"serviceAccount:407536364561-compute@developer.gserviceaccount.com",
+						],
+						"project": "test-project",
+						"role":    "roles/editor",
+					},
+				},
+				{
+					"address":        "google_project_iam_member.project-iam-member",
+					"mode":           "managed",
+					"name":           "project-iam-member",
+					"provider_name":  "registry.terraform.io/hashicorp/google",
+					"schema_version": 0,
+					"sensitive_values": {
+						"condition": [],
+					},
+					"type": "google_project_iam_member",
+					"values": {
+						"condition": [],
+						"member":    "group:rajeevgroup@googlegroup.com",
+						"project":   "test-project",
+						"role":      "roles/editor",
+					},
+				},
+				{
+					"address":          "google_project_iam_policy.project",
+					"mode":             "managed",
+					"name":             "project",
+					"provider_name":    "registry.terraform.io/hashicorp/google",
+					"schema_version":   0,
+					"sensitive_values": {},
+					"type":             "google_project_iam_policy",
+					"values": {
+						"policy_data": "{\"bindings\":[{\"members\":[\"group:rajeevgroup@googlegroup.com\",\"serviceAccount:407536364561-compute@developer.gserviceaccount.com\"],\"role\":\"roles/editor\"}]}",
+						"project":     "test-project",
+					},
+				},
+			],
+		},
+	},
+	"prior_state": {
+		"format_version":    "0.2",
+		"terraform_version": "1.0.9",
+		"values": {
+			"root_module": {
+				"resources": [
+					{
+						"address":        "data.google_iam_policy.admin",
+						"mode":           "data",
+						"name":           "admin",
+						"provider_name":  "registry.terraform.io/hashicorp/google",
+						"schema_version": 0,
+						"sensitive_values": {
+							"binding": [
+								{
+									"condition": [],
+									"members": [
+										false,
+										false,
+									],
+								},
+							],
+						},
+						"type": "google_iam_policy",
+						"values": {
+							"audit_config": null,
+							"binding": [
+								{
+									"condition": [],
+									"members": [
+										"group:rajeevgroup@googlegroup.com",
+										"serviceAccount:407536364561-compute@developer.gserviceaccount.com",
+									],
+									"role": "roles/editor",
+								},
+							],
+							"id":          "3255206999",
+							"policy_data": "{\"bindings\":[{\"members\":[\"group:rajeevgroup@googlegroup.com\",\"serviceAccount:407536364561-compute@developer.gserviceaccount.com\"],\"role\":\"roles/editor\"}]}",
+						},
+					},
+					{
+						"address":        "data.google_iam_policy.admin-project",
+						"mode":           "data",
+						"name":           "admin-project",
+						"provider_name":  "registry.terraform.io/hashicorp/google",
+						"schema_version": 0,
+						"sensitive_values": {
+							"binding": [
+								{
+									"condition": [],
+									"members": [
+										false,
+										false,
+									],
+								},
+							],
+						},
+						"type": "google_iam_policy",
+						"values": {
+							"audit_config": null,
+							"binding": [
+								{
+									"condition": [],
+									"members": [
+										"group:rajeevgroup@googlegroup.com",
+										"serviceAccount:407536364561-compute@developer.gserviceaccount.com",
+									],
+									"role": "roles/editor",
+								},
+							],
+							"id":          "3255206999",
+							"policy_data": "{\"bindings\":[{\"members\":[\"group:rajeevgroup@googlegroup.com\",\"serviceAccount:407536364561-compute@developer.gserviceaccount.com\"],\"role\":\"roles/editor\"}]}",
+						},
+					},
+				],
+			},
+		},
+	},
+	"resource_changes": [
+		{
+			"address": "google_organization_iam_binding.organization-binding",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"condition": [],
+					"members": [
+						"serviceAccount:407536364561-compute@developer.gserviceaccount.com",
+					],
+					"org_id": "airline1",
+					"role":   "roles/editor",
+				},
+				"after_sensitive": {
+					"condition": [],
+					"members": [
+						false,
+					],
+				},
+				"after_unknown": {
+					"condition": [],
+					"etag":      true,
+					"id":        true,
+					"members": [
+						false,
+					],
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "organization-binding",
+			"provider_name": "registry.terraform.io/hashicorp/google",
+			"type":          "google_organization_iam_binding",
+		},
+		{
+			"address": "google_organization_iam_member.organization-member",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"condition": [],
+					"member":    "group:rajeevgroup@googlegroup.com",
+					"org_id":    "airline1",
+					"role":      "roles/editor",
+				},
+				"after_sensitive": {
+					"condition": [],
+				},
+				"after_unknown": {
+					"condition": [],
+					"etag":      true,
+					"id":        true,
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "organization-member",
+			"provider_name": "registry.terraform.io/hashicorp/google",
+			"type":          "google_organization_iam_member",
+		},
+		{
+			"address": "google_organization_iam_policy.organization",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"org_id":      "airline1",
+					"policy_data": "{\"bindings\":[{\"members\":[\"group:rajeevgroup@googlegroup.com\",\"serviceAccount:407536364561-compute@developer.gserviceaccount.com\"],\"role\":\"roles/editor\"}]}",
+				},
+				"after_sensitive": {},
+				"after_unknown": {
+					"etag": true,
+					"id":   true,
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "organization",
+			"provider_name": "registry.terraform.io/hashicorp/google",
+			"type":          "google_organization_iam_policy",
+		},
+		{
+			"address": "google_project_iam_binding.project-binding",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"condition": [],
+					"members": [
+						"group:rajeevgroup@googlegroup.com",
+						"serviceAccount:407536364561-compute@developer.gserviceaccount.com",
+					],
+					"project": "test-project",
+					"role":    "roles/editor",
+				},
+				"after_sensitive": {
+					"condition": [],
+					"members": [
+						false,
+						false,
+					],
+				},
+				"after_unknown": {
+					"condition": [],
+					"etag":      true,
+					"id":        true,
+					"members": [
+						false,
+						false,
+					],
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "project-binding",
+			"provider_name": "registry.terraform.io/hashicorp/google",
+			"type":          "google_project_iam_binding",
+		},
+		{
+			"address": "google_project_iam_member.project-iam-member",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"condition": [],
+					"member":    "group:rajeevgroup@googlegroup.com",
+					"project":   "test-project",
+					"role":      "roles/editor",
+				},
+				"after_sensitive": {
+					"condition": [],
+				},
+				"after_unknown": {
+					"condition": [],
+					"etag":      true,
+					"id":        true,
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "project-iam-member",
+			"provider_name": "registry.terraform.io/hashicorp/google",
+			"type":          "google_project_iam_member",
+		},
+		{
+			"address": "google_project_iam_policy.project",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"policy_data": "{\"bindings\":[{\"members\":[\"group:rajeevgroup@googlegroup.com\",\"serviceAccount:407536364561-compute@developer.gserviceaccount.com\"],\"role\":\"roles/editor\"}]}",
+					"project":     "test-project",
+				},
+				"after_sensitive": {},
+				"after_unknown": {
+					"etag": true,
+					"id":   true,
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "project",
+			"provider_name": "registry.terraform.io/hashicorp/google",
+			"type":          "google_project_iam_policy",
+		},
+	],
+	"terraform_version": "1.0.9",
+	"variables": {
+		"access_token": {
+			"value": "REDACTED_SENSITIVE",
+		},
+	},
+}

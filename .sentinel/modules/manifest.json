@@ -1,0 +1,10 @@
+{
+	"records": [
+		{
+			"key": "tfplan-functions",
+			"source": "./tfplan-functions.sentinel",
+			"sourceSum": "",
+			"dest": "/home/tiwarabhishek/terraform-kms/tfplan-functions.sentinel"
+		}
+	]
+}

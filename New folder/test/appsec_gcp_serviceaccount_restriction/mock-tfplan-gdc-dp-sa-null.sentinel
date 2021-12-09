@@ -1,0 +1,2876 @@
+terraform_version = "1.0.11"
+
+planned_values = {
+	"outputs": {},
+	"resources": {
+		"google_cloudfunctions_function.function": {
+			"address":        "google_cloudfunctions_function.function",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "function",
+			"provider_name":  "registry.terraform.io/hashicorp/google",
+			"tainted":        false,
+			"type":           "google_cloudfunctions_function",
+			"values": {
+				"available_memory_mb":         128,
+				"build_environment_variables": null,
+				"description":                 "My function",
+				"entry_point":                 "hello_world",
+				"environment_variables": {
+					"GOOGLE_FUNCTION_SOURCE": "main.py",
+					"MY_ENV_VAR":             "my-env-var-value",
+				},
+				"ingress_settings": "ALLOW_ALL",
+				"labels": {
+					"my-label": "my-label-value",
+				},
+				"max_instances":         0,
+				"name":                  "my-dev-appid-system-demo-function",
+				"runtime":               "python39",
+				"source_archive_bucket": "my-dev-appid-system-demo-gcsbucke",
+				"source_archive_object": "my-dev-appid-system-demo-gcsbucketobject",
+				"source_repository":     [],
+				"timeout":               60,
+				"timeouts":              null,
+				"trigger_http":          true,
+				"vpc_connector":         null,
+			},
+		},
+		"google_cloudfunctions_function_iam_member.invoker": {
+			"address":        "google_cloudfunctions_function_iam_member.invoker",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "invoker",
+			"provider_name":  "registry.terraform.io/hashicorp/google",
+			"tainted":        false,
+			"type":           "google_cloudfunctions_function_iam_member",
+			"values": {
+				"cloud_function": "my-dev-appid-system-demo-function",
+				"condition":      [],
+				"member":         "serviceAccount:service-sa@appspot.gserviceaccount.com",
+				"role":           "roles/cloudfunctions.invoker",
+			},
+		},
+		"google_compute_firewall.dataproc": {
+			"address":        "google_compute_firewall.dataproc",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "dataproc",
+			"provider_name":  "registry.terraform.io/hashicorp/google",
+			"tainted":        false,
+			"type":           "google_compute_firewall",
+			"values": {
+				"allow": [
+					{
+						"ports":    [],
+						"protocol": "icmp",
+					},
+					{
+						"ports":    [],
+						"protocol": "tcp",
+					},
+					{
+						"ports":    [],
+						"protocol": "udp",
+					},
+				],
+				"deny":                    [],
+				"description":             "Enable Dataproc master and nodes connectivity",
+				"disabled":                null,
+				"log_config":              [],
+				"name":                    "allow-tcp-udp-icmp-dataprocdemo-fw",
+				"network":                 "projects/test-project/regions/us-central1/networks/us-dev-appid-syst-demo-vpc",
+				"priority":                1000,
+				"project":                 "test-project",
+				"source_ranges":           null,
+				"source_service_accounts": null,
+				"source_tags": [
+					"dataproc-source",
+				],
+				"target_service_accounts": null,
+				"target_tags": [
+					"dataproc-target",
+				],
+				"timeouts": null,
+			},
+		},
+		"google_dataproc_cluster.example": {
+			"address":        "google_dataproc_cluster.example",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "example",
+			"provider_name":  "registry.terraform.io/hashicorp/google-beta",
+			"tainted":        false,
+			"type":           "google_dataproc_cluster",
+			"values": {
+				"cluster_config": [
+					{
+						"autoscaling_config": [],
+						"encryption_config": [
+							{},
+						],
+						"endpoint_config": [
+							{
+								"enable_http_port_access": false,
+							},
+						],
+						"gce_cluster_config": [
+							{
+								"internal_ip_only": true,
+								"metadata":         null,
+								"service_account":  null,
+								"service_account_scopes": [
+									"https://www.googleapis.com/auth/cloud-platform",
+								],
+								"subnetwork": "projects/test-project/regions/us-central1/subnetworks/us-dev-appid-syst-demo-subnet",
+								"tags": [
+									"dataproc-tag",
+								],
+							},
+						],
+						"initialization_action": [],
+						"lifecycle_config":      [],
+						"metastore_config":      [],
+						"security_config":       [],
+						"staging_bucket":        null,
+					},
+				],
+				"graceful_decommission_timeout": "0s",
+				"labels": {
+					"application_division": "pci",
+					"application_name":     "app1",
+					"application_role":     "auth",
+					"au":                   "0223092",
+					"created":              "20211124",
+					"environment":          "dev",
+					"gcp_region":           "us",
+					"owner":                "hybridenv",
+				},
+				"name":     "my-dev-appid-strg-dlpdemo-dpcluster",
+				"project":  "test-project",
+				"region":   "us-central1",
+				"timeouts": null,
+			},
+		},
+		"google_kms_crypto_key.secrets": {
+			"address":        "google_kms_crypto_key.secrets",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "secrets",
+			"provider_name":  "registry.terraform.io/hashicorp/google",
+			"tainted":        false,
+			"type":           "google_kms_crypto_key",
+			"values": {
+				"key_ring": "projects/test-project/locations/us/keyRings/savita-keyring-us",
+				"labels": {
+					"application_division": "pci",
+					"application_name":     "app1",
+					"application_role":     "auth",
+					"au":                   "0223092",
+					"created":              "20211124",
+					"environment":          "dev",
+					"gcp_region":           "us",
+					"owner":                "hybridenv",
+				},
+				"name":                          "my-dev-appid-str-demo-key",
+				"purpose":                       "ENCRYPT_DECRYPT",
+				"rotation_period":               null,
+				"skip_initial_version_creation": null,
+				"timeouts":                      null,
+			},
+		},
+		"google_kms_crypto_key_iam_member.dataproc_gce_encryption": {
+			"address":        "google_kms_crypto_key_iam_member.dataproc_gce_encryption",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "dataproc_gce_encryption",
+			"provider_name":  "registry.terraform.io/hashicorp/google",
+			"tainted":        false,
+			"type":           "google_kms_crypto_key_iam_member",
+			"values": {
+				"condition": [],
+				"member":    "serviceAccount:service-680501254856@compute-system.iam.gserviceaccount.com",
+				"role":      "roles/cloudkms.cryptoKeyEncrypter",
+			},
+		},
+		"google_kms_crypto_key_iam_member.dataproc_gce_encryption1": {
+			"address":        "google_kms_crypto_key_iam_member.dataproc_gce_encryption1",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "dataproc_gce_encryption1",
+			"provider_name":  "registry.terraform.io/hashicorp/google",
+			"tainted":        false,
+			"type":           "google_kms_crypto_key_iam_member",
+			"values": {
+				"condition": [],
+				"role":      "roles/cloudkms.cryptoKeyEncrypter",
+			},
+		},
+		"google_kms_crypto_key_iam_member.dataproc_gcs_encryption": {
+			"address":        "google_kms_crypto_key_iam_member.dataproc_gcs_encryption",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "dataproc_gcs_encryption",
+			"provider_name":  "registry.terraform.io/hashicorp/google",
+			"tainted":        false,
+			"type":           "google_kms_crypto_key_iam_member",
+			"values": {
+				"condition": [],
+				"member":    "serviceAccount:service-680501254856@gs-project-accounts.iam.gserviceaccount.com",
+				"role":      "roles/cloudkms.cryptoKeyEncrypter",
+			},
+		},
+		"google_project_iam_binding.dataproc": {
+			"address":        "google_project_iam_binding.dataproc",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "dataproc",
+			"provider_name":  "registry.terraform.io/hashicorp/google",
+			"tainted":        false,
+			"type":           "google_project_iam_binding",
+			"values": {
+				"condition": [],
+				"project":   "test-project",
+				"role":      "roles/compute.networkUser",
+			},
+		},
+		"google_project_iam_member.dataproc_workers": {
+			"address":        "google_project_iam_member.dataproc_workers",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "dataproc_workers",
+			"provider_name":  "registry.terraform.io/hashicorp/google",
+			"tainted":        false,
+			"type":           "google_project_iam_member",
+			"values": {
+				"condition": [],
+				"project":   "projects/test-project",
+				"role":      "roles/dataproc.worker",
+			},
+		},
+		"google_project_iam_member.dataproc_workers1": {
+			"address":        "google_project_iam_member.dataproc_workers1",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "dataproc_workers1",
+			"provider_name":  "registry.terraform.io/hashicorp/google",
+			"tainted":        false,
+			"type":           "google_project_iam_member",
+			"values": {
+				"condition": [],
+				"project":   "projects/test-project",
+				"role":      "roles/logging.logWriter",
+			},
+		},
+		"google_service_account.dataproc_sa": {
+			"address":        "google_service_account.dataproc_sa",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "dataproc_sa",
+			"provider_name":  "registry.terraform.io/hashicorp/google",
+			"tainted":        false,
+			"type":           "google_service_account",
+			"values": {
+				"account_id":   "my-dev-appid-sa-demo-dataproc",
+				"description":  null,
+				"disabled":     false,
+				"display_name": "DataProc Service Account",
+				"project":      "test-project",
+				"timeouts":     null,
+			},
+		},
+		"google_service_account.example": {
+			"address":        "google_service_account.example",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "example",
+			"provider_name":  "registry.terraform.io/hashicorp/google",
+			"tainted":        false,
+			"type":           "google_service_account",
+			"values": {
+				"account_id":   "my-dev-appid-sa-demo-function",
+				"description":  null,
+				"disabled":     false,
+				"display_name": "Function Example Service Account",
+				"project":      "test-project",
+				"timeouts":     null,
+			},
+		},
+		"google_storage_bucket.bucket": {
+			"address":        "google_storage_bucket.bucket",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "bucket",
+			"provider_name":  "registry.terraform.io/hashicorp/google",
+			"tainted":        false,
+			"type":           "google_storage_bucket",
+			"values": {
+				"cors": [],
+				"default_event_based_hold": null,
+				"encryption":               [],
+				"force_destroy":            false,
+				"labels":                   null,
+				"lifecycle_rule":           [],
+				"location":                 "US",
+				"logging":                  [],
+				"name":                     "my-dev-appid-system-demo-gcsbucke",
+				"requester_pays":           null,
+				"retention_policy":         [],
+				"storage_class":            "STANDARD",
+				"versioning":               [],
+				"website":                  [],
+			},
+		},
+		"google_storage_bucket_object.archive": {
+			"address":        "google_storage_bucket_object.archive",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "archive",
+			"provider_name":  "registry.terraform.io/hashicorp/google",
+			"tainted":        false,
+			"type":           "google_storage_bucket_object",
+			"values": {
+				"bucket":              "my-dev-appid-system-demo-gcsbucke",
+				"cache_control":       null,
+				"content":             "REDACTED_SENSITIVE",
+				"content_disposition": null,
+				"content_encoding":    null,
+				"content_language":    null,
+				"customer_encryption": [],
+				"detect_md5hash":      "different hash",
+				"event_based_hold":    null,
+				"metadata":            null,
+				"name":                "my-dev-appid-system-demo-gcsbucketobject",
+				"source":              "./main.zip",
+				"temporary_hold":      null,
+				"timeouts":            null,
+			},
+		},
+		"google_vpc_access_connector.vpc_conn_example": {
+			"address":        "google_vpc_access_connector.vpc_conn_example",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "vpc_conn_example",
+			"provider_name":  "registry.terraform.io/hashicorp/google",
+			"tainted":        false,
+			"type":           "google_vpc_access_connector",
+			"values": {
+				"ip_cidr_range":  "10.8.0.0/28",
+				"max_throughput": 300,
+				"min_throughput": 200,
+				"name":           "my-dev-appid-vc-demo-function",
+				"network":        "us-dev-appid-syst-demo-vpc",
+				"timeouts":       null,
+			},
+		},
+	},
+}
+
+variables = {
+	"access_token": {
+		"name":  "access_token",
+		"value": "REDACTED_SENSITIVE",
+	},
+}
+
+resource_changes = {
+	"google_cloudfunctions_function.function": {
+		"address": "google_cloudfunctions_function.function",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"available_memory_mb":         128,
+				"build_environment_variables": null,
+				"description":                 "My function",
+				"entry_point":                 "hello_world",
+				"environment_variables": {
+					"GOOGLE_FUNCTION_SOURCE": "main.py",
+					"MY_ENV_VAR":             "my-env-var-value",
+				},
+				"ingress_settings": "ALLOW_ALL",
+				"labels": {
+					"my-label": "my-label-value",
+				},
+				"max_instances":         0,
+				"name":                  "my-dev-appid-system-demo-function",
+				"runtime":               "python39",
+				"source_archive_bucket": "my-dev-appid-system-demo-gcsbucke",
+				"source_archive_object": "my-dev-appid-system-demo-gcsbucketobject",
+				"source_repository":     [],
+				"timeout":               60,
+				"timeouts":              null,
+				"trigger_http":          true,
+				"vpc_connector":         null,
+			},
+			"after_unknown": {
+				"environment_variables":         {},
+				"event_trigger":                 true,
+				"https_trigger_url":             true,
+				"id":                            true,
+				"labels":                        {},
+				"project":                       true,
+				"region":                        true,
+				"service_account_email":         true,
+				"source_repository":             [],
+				"vpc_connector_egress_settings": true,
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "function",
+		"provider_name":  "registry.terraform.io/hashicorp/google",
+		"type":           "google_cloudfunctions_function",
+	},
+	"google_cloudfunctions_function_iam_member.invoker": {
+		"address": "google_cloudfunctions_function_iam_member.invoker",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"cloud_function": "my-dev-appid-system-demo-function",
+				"condition":      [],
+				"member":         "serviceAccount:service-sa@appspot.gserviceaccount.com",
+				"role":           "roles/cloudfunctions.invoker",
+			},
+			"after_unknown": {
+				"condition": [],
+				"etag":      true,
+				"id":        true,
+				"project":   true,
+				"region":    true,
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "invoker",
+		"provider_name":  "registry.terraform.io/hashicorp/google",
+		"type":           "google_cloudfunctions_function_iam_member",
+	},
+	"google_compute_firewall.dataproc": {
+		"address": "google_compute_firewall.dataproc",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"allow": [
+					{
+						"ports":    [],
+						"protocol": "icmp",
+					},
+					{
+						"ports":    [],
+						"protocol": "tcp",
+					},
+					{
+						"ports":    [],
+						"protocol": "udp",
+					},
+				],
+				"deny":                    [],
+				"description":             "Enable Dataproc master and nodes connectivity",
+				"disabled":                null,
+				"log_config":              [],
+				"name":                    "allow-tcp-udp-icmp-dataprocdemo-fw",
+				"network":                 "projects/test-project/regions/us-central1/networks/us-dev-appid-syst-demo-vpc",
+				"priority":                1000,
+				"project":                 "test-project",
+				"source_ranges":           null,
+				"source_service_accounts": null,
+				"source_tags": [
+					"dataproc-source",
+				],
+				"target_service_accounts": null,
+				"target_tags": [
+					"dataproc-target",
+				],
+				"timeouts": null,
+			},
+			"after_unknown": {
+				"allow": [
+					{
+						"ports": [],
+					},
+					{
+						"ports": [],
+					},
+					{
+						"ports": [],
+					},
+				],
+				"creation_timestamp": true,
+				"deny":               [],
+				"destination_ranges": true,
+				"direction":          true,
+				"enable_logging":     true,
+				"id":                 true,
+				"log_config":         [],
+				"self_link":          true,
+				"source_tags": [
+					false,
+				],
+				"target_tags": [
+					false,
+				],
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "dataproc",
+		"provider_name":  "registry.terraform.io/hashicorp/google",
+		"type":           "google_compute_firewall",
+	},
+	"google_dataproc_cluster.example": {
+		"address": "google_dataproc_cluster.example",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"cluster_config": [
+					{
+						"autoscaling_config": [],
+						"encryption_config": [
+							{},
+						],
+						"endpoint_config": [
+							{
+								"enable_http_port_access": false,
+							},
+						],
+						"gce_cluster_config": [
+							{
+								"internal_ip_only": true,
+								"metadata":         null,
+								"service_account":  null,
+								"service_account_scopes": [
+									"https://www.googleapis.com/auth/cloud-platform",
+								],
+								"subnetwork": "projects/test-project/regions/us-central1/subnetworks/us-dev-appid-syst-demo-subnet",
+								"tags": [
+									"dataproc-tag",
+								],
+							},
+						],
+						"initialization_action": [],
+						"lifecycle_config":      [],
+						"metastore_config":      [],
+						"security_config":       [],
+						"staging_bucket":        null,
+					},
+				],
+				"graceful_decommission_timeout": "0s",
+				"labels": {
+					"application_division": "pci",
+					"application_name":     "app1",
+					"application_role":     "auth",
+					"au":                   "0223092",
+					"created":              "20211124",
+					"environment":          "dev",
+					"gcp_region":           "us",
+					"owner":                "hybridenv",
+				},
+				"name":     "my-dev-appid-strg-dlpdemo-dpcluster",
+				"project":  "test-project",
+				"region":   "us-central1",
+				"timeouts": null,
+			},
+			"after_unknown": {
+				"cluster_config": [
+					{
+						"autoscaling_config": [],
+						"bucket":             true,
+						"encryption_config": [
+							{
+								"kms_key_name": true,
+							},
+						],
+						"endpoint_config": [
+							{
+								"http_ports": true,
+							},
+						],
+						"gce_cluster_config": [
+							{
+								"network": true,
+								"service_account_scopes": [
+									false,
+								],
+								"shielded_instance_config": true,
+								"tags": [
+									false,
+								],
+								"zone": true,
+							},
+						],
+						"initialization_action":     [],
+						"lifecycle_config":          [],
+						"master_config":             true,
+						"metastore_config":          [],
+						"preemptible_worker_config": true,
+						"security_config":           [],
+						"software_config":           true,
+						"temp_bucket":               true,
+						"worker_config":             true,
+					},
+				],
+				"id":     true,
+				"labels": {},
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "example",
+		"provider_name":  "registry.terraform.io/hashicorp/google-beta",
+		"type":           "google_dataproc_cluster",
+	},
+	"google_kms_crypto_key.secrets": {
+		"address": "google_kms_crypto_key.secrets",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"key_ring": "projects/test-project/locations/us/keyRings/savita-keyring-us",
+				"labels": {
+					"application_division": "pci",
+					"application_name":     "app1",
+					"application_role":     "auth",
+					"au":                   "0223092",
+					"created":              "20211124",
+					"environment":          "dev",
+					"gcp_region":           "us",
+					"owner":                "hybridenv",
+				},
+				"name":                          "my-dev-appid-str-demo-key",
+				"purpose":                       "ENCRYPT_DECRYPT",
+				"rotation_period":               null,
+				"skip_initial_version_creation": null,
+				"timeouts":                      null,
+			},
+			"after_unknown": {
+				"destroy_scheduled_duration": true,
+				"id":               true,
+				"import_only":      true,
+				"labels":           {},
+				"version_template": true,
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "secrets",
+		"provider_name":  "registry.terraform.io/hashicorp/google",
+		"type":           "google_kms_crypto_key",
+	},
+	"google_kms_crypto_key_iam_member.dataproc_gce_encryption": {
+		"address": "google_kms_crypto_key_iam_member.dataproc_gce_encryption",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"condition": [],
+				"member":    "serviceAccount:service-680501254856@compute-system.iam.gserviceaccount.com",
+				"role":      "roles/cloudkms.cryptoKeyEncrypter",
+			},
+			"after_unknown": {
+				"condition":     [],
+				"crypto_key_id": true,
+				"etag":          true,
+				"id":            true,
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "dataproc_gce_encryption",
+		"provider_name":  "registry.terraform.io/hashicorp/google",
+		"type":           "google_kms_crypto_key_iam_member",
+	},
+	"google_kms_crypto_key_iam_member.dataproc_gce_encryption1": {
+		"address": "google_kms_crypto_key_iam_member.dataproc_gce_encryption1",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"condition": [],
+				"role":      "roles/cloudkms.cryptoKeyEncrypter",
+			},
+			"after_unknown": {
+				"condition":     [],
+				"crypto_key_id": true,
+				"etag":          true,
+				"id":            true,
+				"member":        true,
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "dataproc_gce_encryption1",
+		"provider_name":  "registry.terraform.io/hashicorp/google",
+		"type":           "google_kms_crypto_key_iam_member",
+	},
+	"google_kms_crypto_key_iam_member.dataproc_gcs_encryption": {
+		"address": "google_kms_crypto_key_iam_member.dataproc_gcs_encryption",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"condition": [],
+				"member":    "serviceAccount:service-680501254856@gs-project-accounts.iam.gserviceaccount.com",
+				"role":      "roles/cloudkms.cryptoKeyEncrypter",
+			},
+			"after_unknown": {
+				"condition":     [],
+				"crypto_key_id": true,
+				"etag":          true,
+				"id":            true,
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "dataproc_gcs_encryption",
+		"provider_name":  "registry.terraform.io/hashicorp/google",
+		"type":           "google_kms_crypto_key_iam_member",
+	},
+	"google_project_iam_binding.dataproc": {
+		"address": "google_project_iam_binding.dataproc",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"condition": [],
+				"project":   "test-project",
+				"role":      "roles/compute.networkUser",
+			},
+			"after_unknown": {
+				"condition": [],
+				"etag":      true,
+				"id":        true,
+				"members":   true,
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "dataproc",
+		"provider_name":  "registry.terraform.io/hashicorp/google",
+		"type":           "google_project_iam_binding",
+	},
+	"google_project_iam_member.dataproc_workers": {
+		"address": "google_project_iam_member.dataproc_workers",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"condition": [],
+				"project":   "projects/test-project",
+				"role":      "roles/dataproc.worker",
+			},
+			"after_unknown": {
+				"condition": [],
+				"etag":      true,
+				"id":        true,
+				"member":    true,
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "dataproc_workers",
+		"provider_name":  "registry.terraform.io/hashicorp/google",
+		"type":           "google_project_iam_member",
+	},
+	"google_project_iam_member.dataproc_workers1": {
+		"address": "google_project_iam_member.dataproc_workers1",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"condition": [],
+				"project":   "projects/test-project",
+				"role":      "roles/logging.logWriter",
+			},
+			"after_unknown": {
+				"condition": [],
+				"etag":      true,
+				"id":        true,
+				"member":    true,
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "dataproc_workers1",
+		"provider_name":  "registry.terraform.io/hashicorp/google",
+		"type":           "google_project_iam_member",
+	},
+	"google_service_account.dataproc_sa": {
+		"address": "google_service_account.dataproc_sa",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"account_id":   "my-dev-appid-sa-demo-dataproc",
+				"description":  null,
+				"disabled":     false,
+				"display_name": "DataProc Service Account",
+				"project":      "test-project",
+				"timeouts":     null,
+			},
+			"after_unknown": {
+				"email":     true,
+				"id":        true,
+				"name":      true,
+				"unique_id": true,
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "dataproc_sa",
+		"provider_name":  "registry.terraform.io/hashicorp/google",
+		"type":           "google_service_account",
+	},
+	"google_service_account.example": {
+		"address": "google_service_account.example",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"account_id":   "my-dev-appid-sa-demo-function",
+				"description":  null,
+				"disabled":     false,
+				"display_name": "Function Example Service Account",
+				"project":      "test-project",
+				"timeouts":     null,
+			},
+			"after_unknown": {
+				"email":     true,
+				"id":        true,
+				"name":      true,
+				"unique_id": true,
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "example",
+		"provider_name":  "registry.terraform.io/hashicorp/google",
+		"type":           "google_service_account",
+	},
+	"google_storage_bucket.bucket": {
+		"address": "google_storage_bucket.bucket",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"cors": [],
+				"default_event_based_hold": null,
+				"encryption":               [],
+				"force_destroy":            false,
+				"labels":                   null,
+				"lifecycle_rule":           [],
+				"location":                 "US",
+				"logging":                  [],
+				"name":                     "my-dev-appid-system-demo-gcsbucke",
+				"requester_pays":           null,
+				"retention_policy":         [],
+				"storage_class":            "STANDARD",
+				"versioning":               [],
+				"website":                  [],
+			},
+			"after_unknown": {
+				"cors":                        [],
+				"encryption":                  [],
+				"id":                          true,
+				"lifecycle_rule":              [],
+				"logging":                     [],
+				"project":                     true,
+				"retention_policy":            [],
+				"self_link":                   true,
+				"uniform_bucket_level_access": true,
+				"url":        true,
+				"versioning": [],
+				"website":    [],
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "bucket",
+		"provider_name":  "registry.terraform.io/hashicorp/google",
+		"type":           "google_storage_bucket",
+	},
+	"google_storage_bucket_object.archive": {
+		"address": "google_storage_bucket_object.archive",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"bucket":              "my-dev-appid-system-demo-gcsbucke",
+				"cache_control":       null,
+				"content":             "REDACTED_SENSITIVE",
+				"content_disposition": null,
+				"content_encoding":    null,
+				"content_language":    null,
+				"customer_encryption": [],
+				"detect_md5hash":      "different hash",
+				"event_based_hold":    null,
+				"metadata":            null,
+				"name":                "my-dev-appid-system-demo-gcsbucketobject",
+				"source":              "./main.zip",
+				"temporary_hold":      null,
+				"timeouts":            null,
+			},
+			"after_unknown": {
+				"content_type":        true,
+				"crc32c":              true,
+				"customer_encryption": [],
+				"id":            true,
+				"kms_key_name":  true,
+				"md5hash":       true,
+				"media_link":    true,
+				"output_name":   true,
+				"self_link":     true,
+				"storage_class": true,
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "archive",
+		"provider_name":  "registry.terraform.io/hashicorp/google",
+		"type":           "google_storage_bucket_object",
+	},
+	"google_vpc_access_connector.vpc_conn_example": {
+		"address": "google_vpc_access_connector.vpc_conn_example",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"ip_cidr_range":  "10.8.0.0/28",
+				"max_throughput": 300,
+				"min_throughput": 200,
+				"name":           "my-dev-appid-vc-demo-function",
+				"network":        "us-dev-appid-syst-demo-vpc",
+				"timeouts":       null,
+			},
+			"after_unknown": {
+				"id":        true,
+				"project":   true,
+				"region":    true,
+				"self_link": true,
+				"state":     true,
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "vpc_conn_example",
+		"provider_name":  "registry.terraform.io/hashicorp/google",
+		"type":           "google_vpc_access_connector",
+	},
+}
+
+output_changes = {}
+
+raw = {
+	"configuration": {
+		"provider_config": {
+			"google": {
+				"expressions": {
+					"access_token": {
+						"references": [
+							"var.access_token",
+						],
+					},
+					"project": {
+						"constant_value": "test-project",
+					},
+					"region": {
+						"constant_value": "us-central1",
+					},
+					"user_project_override": {
+						"constant_value": true,
+					},
+				},
+				"name": "google",
+			},
+			"google-beta": {
+				"expressions": {
+					"access_token": {
+						"references": [
+							"var.access_token",
+						],
+					},
+				},
+				"name": "google-beta",
+			},
+		},
+		"root_module": {
+			"resources": [
+				{
+					"address": "google_cloudfunctions_function.function",
+					"expressions": {
+						"available_memory_mb": {
+							"constant_value": 128,
+						},
+						"description": {
+							"constant_value": "My function",
+						},
+						"entry_point": {
+							"constant_value": "hello_world",
+						},
+						"environment_variables": {
+							"constant_value": {
+								"GOOGLE_FUNCTION_SOURCE": "main.py",
+								"MY_ENV_VAR":             "my-env-var-value",
+							},
+						},
+						"ingress_settings": {
+							"constant_value": "ALLOW_ALL",
+						},
+						"labels": {
+							"constant_value": {
+								"my-label": "my-label-value",
+							},
+						},
+						"name": {
+							"constant_value": "my-dev-appid-system-demo-function",
+						},
+						"runtime": {
+							"constant_value": "python39",
+						},
+						"source_archive_bucket": {
+							"references": [
+								"google_storage_bucket.bucket.name",
+								"google_storage_bucket.bucket",
+							],
+						},
+						"source_archive_object": {
+							"references": [
+								"google_storage_bucket_object.archive.name",
+								"google_storage_bucket_object.archive",
+							],
+						},
+						"timeout": {
+							"constant_value": 60,
+						},
+						"trigger_http": {
+							"constant_value": true,
+						},
+					},
+					"mode":                "managed",
+					"name":                "function",
+					"provider_config_key": "google",
+					"schema_version":      0,
+					"type":                "google_cloudfunctions_function",
+				},
+				{
+					"address": "google_cloudfunctions_function_iam_member.invoker",
+					"expressions": {
+						"cloud_function": {
+							"references": [
+								"google_cloudfunctions_function.function.name",
+								"google_cloudfunctions_function.function",
+							],
+						},
+						"member": {
+							"constant_value": "serviceAccount:service-sa@appspot.gserviceaccount.com",
+						},
+						"project": {
+							"references": [
+								"google_cloudfunctions_function.function.project",
+								"google_cloudfunctions_function.function",
+							],
+						},
+						"region": {
+							"references": [
+								"google_cloudfunctions_function.function.region",
+								"google_cloudfunctions_function.function",
+							],
+						},
+						"role": {
+							"constant_value": "roles/cloudfunctions.invoker",
+						},
+					},
+					"mode":                "managed",
+					"name":                "invoker",
+					"provider_config_key": "google",
+					"schema_version":      0,
+					"type":                "google_cloudfunctions_function_iam_member",
+				},
+				{
+					"address": "google_compute_firewall.dataproc",
+					"expressions": {
+						"allow": [
+							{
+								"protocol": {
+									"constant_value": "tcp",
+								},
+							},
+							{
+								"protocol": {
+									"constant_value": "udp",
+								},
+							},
+							{
+								"protocol": {
+									"constant_value": "icmp",
+								},
+							},
+						],
+						"description": {
+							"constant_value": "Enable Dataproc master and nodes connectivity",
+						},
+						"name": {
+							"constant_value": "allow-tcp-udp-icmp-dataprocdemo-fw",
+						},
+						"network": {
+							"constant_value": "projects/test-project/regions/us-central1/networks/us-dev-appid-syst-demo-vpc",
+						},
+						"project": {
+							"constant_value": "test-project",
+						},
+						"source_tags": {
+							"constant_value": [
+								"dataproc-source",
+							],
+						},
+						"target_tags": {
+							"constant_value": [
+								"dataproc-target",
+							],
+						},
+					},
+					"mode":                "managed",
+					"name":                "dataproc",
+					"provider_config_key": "google",
+					"schema_version":      1,
+					"type":                "google_compute_firewall",
+				},
+				{
+					"address": "google_dataproc_cluster.example",
+					"depends_on": [
+						"google_service_account.dataproc_sa",
+						"google_project_iam_member.dataproc_workers",
+					],
+					"expressions": {
+						"cluster_config": [
+							{
+								"encryption_config": [
+									{
+										"kms_key_name": {
+											"references": [
+												"google_kms_crypto_key.secrets.id",
+												"google_kms_crypto_key.secrets",
+											],
+										},
+									},
+								],
+								"endpoint_config": [
+									{
+										"enable_http_port_access": {
+											"constant_value": false,
+										},
+									},
+								],
+								"gce_cluster_config": [
+									{
+										"internal_ip_only": {
+											"constant_value": true,
+										},
+										"service_account": {},
+										"service_account_scopes": {
+											"constant_value": [
+												"cloud-platform",
+											],
+										},
+										"subnetwork": {
+											"constant_value": "projects/test-project/regions/us-central1/subnetworks/us-dev-appid-syst-demo-subnet",
+										},
+										"tags": {
+											"constant_value": [
+												"dataproc-tag",
+											],
+										},
+									},
+								],
+							},
+						],
+						"labels": {
+							"constant_value": {
+								"application_division": "pci",
+								"application_name":     "app1",
+								"application_role":     "auth",
+								"au":                   "0223092",
+								"created":              "20211124",
+								"environment":          "dev",
+								"gcp_region":           "us",
+								"owner":                "hybridenv",
+							},
+						},
+						"name": {
+							"constant_value": "my-dev-appid-strg-dlpdemo-dpcluster",
+						},
+						"project": {
+							"references": [
+								"data.google_project.project.project_id",
+								"data.google_project.project",
+							],
+						},
+						"region": {
+							"constant_value": "us-central1",
+						},
+					},
+					"mode":                "managed",
+					"name":                "example",
+					"provider_config_key": "google-beta",
+					"schema_version":      0,
+					"type":                "google_dataproc_cluster",
+				},
+				{
+					"address": "google_kms_crypto_key.secrets",
+					"expressions": {
+						"key_ring": {
+							"constant_value": "projects/test-project/locations/us/keyRings/savita-keyring-us",
+						},
+						"labels": {
+							"constant_value": {
+								"application_division": "pci",
+								"application_name":     "app1",
+								"application_role":     "auth",
+								"au":                   "0223092",
+								"created":              "20211124",
+								"environment":          "dev",
+								"gcp_region":           "us",
+								"owner":                "hybridenv",
+							},
+						},
+						"name": {
+							"constant_value": "my-dev-appid-str-demo-key",
+						},
+					},
+					"mode":                "managed",
+					"name":                "secrets",
+					"provider_config_key": "google",
+					"schema_version":      1,
+					"type":                "google_kms_crypto_key",
+				},
+				{
+					"address": "google_kms_crypto_key_iam_member.dataproc_gce_encryption",
+					"expressions": {
+						"crypto_key_id": {
+							"references": [
+								"google_kms_crypto_key.secrets.id",
+								"google_kms_crypto_key.secrets",
+							],
+						},
+						"member": {
+							"references": [
+								"data.google_project.project.number",
+								"data.google_project.project",
+							],
+						},
+						"role": {
+							"constant_value": "roles/cloudkms.cryptoKeyEncrypter",
+						},
+					},
+					"mode":                "managed",
+					"name":                "dataproc_gce_encryption",
+					"provider_config_key": "google",
+					"schema_version":      0,
+					"type":                "google_kms_crypto_key_iam_member",
+				},
+				{
+					"address": "google_kms_crypto_key_iam_member.dataproc_gce_encryption1",
+					"expressions": {
+						"crypto_key_id": {
+							"references": [
+								"google_kms_crypto_key.secrets.id",
+								"google_kms_crypto_key.secrets",
+							],
+						},
+						"member": {
+							"references": [
+								"google_service_account.dataproc_sa.email",
+								"google_service_account.dataproc_sa",
+							],
+						},
+						"role": {
+							"constant_value": "roles/cloudkms.cryptoKeyEncrypter",
+						},
+					},
+					"mode":                "managed",
+					"name":                "dataproc_gce_encryption1",
+					"provider_config_key": "google",
+					"schema_version":      0,
+					"type":                "google_kms_crypto_key_iam_member",
+				},
+				{
+					"address": "google_kms_crypto_key_iam_member.dataproc_gcs_encryption",
+					"expressions": {
+						"crypto_key_id": {
+							"references": [
+								"google_kms_crypto_key.secrets.id",
+								"google_kms_crypto_key.secrets",
+							],
+						},
+						"member": {
+							"references": [
+								"data.google_storage_project_service_account.gcss_sa.email_address",
+								"data.google_storage_project_service_account.gcss_sa",
+							],
+						},
+						"role": {
+							"constant_value": "roles/cloudkms.cryptoKeyEncrypter",
+						},
+					},
+					"mode":                "managed",
+					"name":                "dataproc_gcs_encryption",
+					"provider_config_key": "google",
+					"schema_version":      0,
+					"type":                "google_kms_crypto_key_iam_member",
+				},
+				{
+					"address": "google_project_iam_binding.dataproc",
+					"expressions": {
+						"members": {
+							"references": [
+								"google_service_account.dataproc_sa.email",
+								"google_service_account.dataproc_sa",
+								"data.google_project.project.number",
+								"data.google_project.project",
+							],
+						},
+						"project": {
+							"constant_value": "test-project",
+						},
+						"role": {
+							"constant_value": "roles/compute.networkUser",
+						},
+					},
+					"mode":                "managed",
+					"name":                "dataproc",
+					"provider_config_key": "google",
+					"schema_version":      0,
+					"type":                "google_project_iam_binding",
+				},
+				{
+					"address": "google_project_iam_member.dataproc_workers",
+					"expressions": {
+						"member": {
+							"references": [
+								"google_service_account.dataproc_sa.email",
+								"google_service_account.dataproc_sa",
+							],
+						},
+						"project": {
+							"references": [
+								"data.google_project.project.id",
+								"data.google_project.project",
+							],
+						},
+						"role": {
+							"constant_value": "roles/dataproc.worker",
+						},
+					},
+					"mode":                "managed",
+					"name":                "dataproc_workers",
+					"provider_config_key": "google",
+					"schema_version":      0,
+					"type":                "google_project_iam_member",
+				},
+				{
+					"address": "google_project_iam_member.dataproc_workers1",
+					"expressions": {
+						"member": {
+							"references": [
+								"google_service_account.dataproc_sa.email",
+								"google_service_account.dataproc_sa",
+							],
+						},
+						"project": {
+							"references": [
+								"data.google_project.project.id",
+								"data.google_project.project",
+							],
+						},
+						"role": {
+							"constant_value": "roles/logging.logWriter",
+						},
+					},
+					"mode":                "managed",
+					"name":                "dataproc_workers1",
+					"provider_config_key": "google",
+					"schema_version":      0,
+					"type":                "google_project_iam_member",
+				},
+				{
+					"address": "google_service_account.dataproc_sa",
+					"expressions": {
+						"account_id": {
+							"constant_value": "my-dev-appid-sa-demo-dataproc",
+						},
+						"display_name": {
+							"constant_value": "DataProc Service Account",
+						},
+						"project": {
+							"references": [
+								"data.google_project.project.project_id",
+								"data.google_project.project",
+							],
+						},
+					},
+					"mode":                "managed",
+					"name":                "dataproc_sa",
+					"provider_config_key": "google",
+					"schema_version":      0,
+					"type":                "google_service_account",
+				},
+				{
+					"address": "google_service_account.example",
+					"expressions": {
+						"account_id": {
+							"constant_value": "my-dev-appid-sa-demo-function",
+						},
+						"display_name": {
+							"constant_value": "Function Example Service Account",
+						},
+						"project": {
+							"constant_value": "test-project",
+						},
+					},
+					"mode":                "managed",
+					"name":                "example",
+					"provider_config_key": "google",
+					"schema_version":      0,
+					"type":                "google_service_account",
+				},
+				{
+					"address": "google_storage_bucket.bucket",
+					"expressions": {
+						"location": {
+							"constant_value": "us",
+						},
+						"name": {
+							"constant_value": "my-dev-appid-system-demo-gcsbucke",
+						},
+					},
+					"mode":                "managed",
+					"name":                "bucket",
+					"provider_config_key": "google",
+					"schema_version":      0,
+					"type":                "google_storage_bucket",
+				},
+				{
+					"address": "google_storage_bucket_object.archive",
+					"expressions": {
+						"bucket": {
+							"references": [
+								"google_storage_bucket.bucket.name",
+								"google_storage_bucket.bucket",
+							],
+						},
+						"name": {
+							"constant_value": "my-dev-appid-system-demo-gcsbucketobject",
+						},
+						"source": {
+							"constant_value": "./main.zip",
+						},
+					},
+					"mode":                "managed",
+					"name":                "archive",
+					"provider_config_key": "google",
+					"schema_version":      0,
+					"type":                "google_storage_bucket_object",
+				},
+				{
+					"address": "google_vpc_access_connector.vpc_conn_example",
+					"expressions": {
+						"ip_cidr_range": {
+							"constant_value": "10.8.0.0/28",
+						},
+						"name": {
+							"constant_value": "my-dev-appid-vc-demo-function",
+						},
+						"network": {
+							"constant_value": "us-dev-appid-syst-demo-vpc",
+						},
+					},
+					"mode":                "managed",
+					"name":                "vpc_conn_example",
+					"provider_config_key": "google",
+					"schema_version":      0,
+					"type":                "google_vpc_access_connector",
+				},
+				{
+					"address": "data.google_project.project",
+					"expressions": {
+						"project_id": {
+							"constant_value": "test-project",
+						},
+					},
+					"mode":                "data",
+					"name":                "project",
+					"provider_config_key": "google",
+					"schema_version":      0,
+					"type":                "google_project",
+				},
+				{
+					"address": "data.google_storage_project_service_account.gcss_sa",
+					"expressions": {
+						"project": {
+							"constant_value": "test-project",
+						},
+					},
+					"mode":                "data",
+					"name":                "gcss_sa",
+					"provider_config_key": "google",
+					"schema_version":      0,
+					"type":                "google_storage_project_service_account",
+				},
+			],
+			"variables": {
+				"access_token": {
+					"description": "access_token",
+					"sensitive":   true,
+				},
+			},
+		},
+	},
+	"format_version": "0.2",
+	"planned_values": {
+		"root_module": {
+			"resources": [
+				{
+					"address":        "google_cloudfunctions_function.function",
+					"mode":           "managed",
+					"name":           "function",
+					"provider_name":  "registry.terraform.io/hashicorp/google",
+					"schema_version": 0,
+					"sensitive_values": {
+						"environment_variables": {},
+						"event_trigger":         [],
+						"labels":                {},
+						"source_repository":     [],
+					},
+					"type": "google_cloudfunctions_function",
+					"values": {
+						"available_memory_mb":         128,
+						"build_environment_variables": null,
+						"description":                 "My function",
+						"entry_point":                 "hello_world",
+						"environment_variables": {
+							"GOOGLE_FUNCTION_SOURCE": "main.py",
+							"MY_ENV_VAR":             "my-env-var-value",
+						},
+						"ingress_settings": "ALLOW_ALL",
+						"labels": {
+							"my-label": "my-label-value",
+						},
+						"max_instances":         0,
+						"name":                  "my-dev-appid-system-demo-function",
+						"runtime":               "python39",
+						"source_archive_bucket": "my-dev-appid-system-demo-gcsbucke",
+						"source_archive_object": "my-dev-appid-system-demo-gcsbucketobject",
+						"source_repository":     [],
+						"timeout":               60,
+						"timeouts":              null,
+						"trigger_http":          true,
+						"vpc_connector":         null,
+					},
+				},
+				{
+					"address":        "google_cloudfunctions_function_iam_member.invoker",
+					"mode":           "managed",
+					"name":           "invoker",
+					"provider_name":  "registry.terraform.io/hashicorp/google",
+					"schema_version": 0,
+					"sensitive_values": {
+						"condition": [],
+					},
+					"type": "google_cloudfunctions_function_iam_member",
+					"values": {
+						"cloud_function": "my-dev-appid-system-demo-function",
+						"condition":      [],
+						"member":         "serviceAccount:service-sa@appspot.gserviceaccount.com",
+						"role":           "roles/cloudfunctions.invoker",
+					},
+				},
+				{
+					"address":        "google_compute_firewall.dataproc",
+					"mode":           "managed",
+					"name":           "dataproc",
+					"provider_name":  "registry.terraform.io/hashicorp/google",
+					"schema_version": 1,
+					"sensitive_values": {
+						"allow": [
+							{
+								"ports": [],
+							},
+							{
+								"ports": [],
+							},
+							{
+								"ports": [],
+							},
+						],
+						"deny":               [],
+						"destination_ranges": [],
+						"log_config":         [],
+						"source_tags": [
+							false,
+						],
+						"target_tags": [
+							false,
+						],
+					},
+					"type": "google_compute_firewall",
+					"values": {
+						"allow": [
+							{
+								"ports":    [],
+								"protocol": "icmp",
+							},
+							{
+								"ports":    [],
+								"protocol": "tcp",
+							},
+							{
+								"ports":    [],
+								"protocol": "udp",
+							},
+						],
+						"deny":                    [],
+						"description":             "Enable Dataproc master and nodes connectivity",
+						"disabled":                null,
+						"log_config":              [],
+						"name":                    "allow-tcp-udp-icmp-dataprocdemo-fw",
+						"network":                 "projects/test-project/regions/us-central1/networks/us-dev-appid-syst-demo-vpc",
+						"priority":                1000,
+						"project":                 "test-project",
+						"source_ranges":           null,
+						"source_service_accounts": null,
+						"source_tags": [
+							"dataproc-source",
+						],
+						"target_service_accounts": null,
+						"target_tags": [
+							"dataproc-target",
+						],
+						"timeouts": null,
+					},
+				},
+				{
+					"address":        "google_dataproc_cluster.example",
+					"mode":           "managed",
+					"name":           "example",
+					"provider_name":  "registry.terraform.io/hashicorp/google-beta",
+					"schema_version": 0,
+					"sensitive_values": {
+						"cluster_config": [
+							{
+								"autoscaling_config": [],
+								"encryption_config": [
+									{},
+								],
+								"endpoint_config": [
+									{
+										"http_ports": {},
+									},
+								],
+								"gce_cluster_config": [
+									{
+										"service_account_scopes": [
+											false,
+										],
+										"shielded_instance_config": [],
+										"tags": [
+											false,
+										],
+									},
+								],
+								"initialization_action":     [],
+								"lifecycle_config":          [],
+								"master_config":             [],
+								"metastore_config":          [],
+								"preemptible_worker_config": [],
+								"security_config":           [],
+								"software_config":           [],
+								"worker_config":             [],
+							},
+						],
+						"labels": {},
+					},
+					"type": "google_dataproc_cluster",
+					"values": {
+						"cluster_config": [
+							{
+								"autoscaling_config": [],
+								"encryption_config": [
+									{},
+								],
+								"endpoint_config": [
+									{
+										"enable_http_port_access": false,
+									},
+								],
+								"gce_cluster_config": [
+									{
+										"internal_ip_only": true,
+										"metadata":         null,
+										"service_account":  null,
+										"service_account_scopes": [
+											"https://www.googleapis.com/auth/cloud-platform",
+										],
+										"subnetwork": "projects/test-project/regions/us-central1/subnetworks/us-dev-appid-syst-demo-subnet",
+										"tags": [
+											"dataproc-tag",
+										],
+									},
+								],
+								"initialization_action": [],
+								"lifecycle_config":      [],
+								"metastore_config":      [],
+								"security_config":       [],
+								"staging_bucket":        null,
+							},
+						],
+						"graceful_decommission_timeout": "0s",
+						"labels": {
+							"application_division": "pci",
+							"application_name":     "app1",
+							"application_role":     "auth",
+							"au":                   "0223092",
+							"created":              "20211124",
+							"environment":          "dev",
+							"gcp_region":           "us",
+							"owner":                "hybridenv",
+						},
+						"name":     "my-dev-appid-strg-dlpdemo-dpcluster",
+						"project":  "test-project",
+						"region":   "us-central1",
+						"timeouts": null,
+					},
+				},
+				{
+					"address":        "google_kms_crypto_key.secrets",
+					"mode":           "managed",
+					"name":           "secrets",
+					"provider_name":  "registry.terraform.io/hashicorp/google",
+					"schema_version": 1,
+					"sensitive_values": {
+						"labels":           {},
+						"version_template": [],
+					},
+					"type": "google_kms_crypto_key",
+					"values": {
+						"key_ring": "projects/test-project/locations/us/keyRings/savita-keyring-us",
+						"labels": {
+							"application_division": "pci",
+							"application_name":     "app1",
+							"application_role":     "auth",
+							"au":                   "0223092",
+							"created":              "20211124",
+							"environment":          "dev",
+							"gcp_region":           "us",
+							"owner":                "hybridenv",
+						},
+						"name":                          "my-dev-appid-str-demo-key",
+						"purpose":                       "ENCRYPT_DECRYPT",
+						"rotation_period":               null,
+						"skip_initial_version_creation": null,
+						"timeouts":                      null,
+					},
+				},
+				{
+					"address":        "google_kms_crypto_key_iam_member.dataproc_gce_encryption",
+					"mode":           "managed",
+					"name":           "dataproc_gce_encryption",
+					"provider_name":  "registry.terraform.io/hashicorp/google",
+					"schema_version": 0,
+					"sensitive_values": {
+						"condition": [],
+					},
+					"type": "google_kms_crypto_key_iam_member",
+					"values": {
+						"condition": [],
+						"member":    "serviceAccount:service-680501254856@compute-system.iam.gserviceaccount.com",
+						"role":      "roles/cloudkms.cryptoKeyEncrypter",
+					},
+				},
+				{
+					"address":        "google_kms_crypto_key_iam_member.dataproc_gce_encryption1",
+					"mode":           "managed",
+					"name":           "dataproc_gce_encryption1",
+					"provider_name":  "registry.terraform.io/hashicorp/google",
+					"schema_version": 0,
+					"sensitive_values": {
+						"condition": [],
+					},
+					"type": "google_kms_crypto_key_iam_member",
+					"values": {
+						"condition": [],
+						"role":      "roles/cloudkms.cryptoKeyEncrypter",
+					},
+				},
+				{
+					"address":        "google_kms_crypto_key_iam_member.dataproc_gcs_encryption",
+					"mode":           "managed",
+					"name":           "dataproc_gcs_encryption",
+					"provider_name":  "registry.terraform.io/hashicorp/google",
+					"schema_version": 0,
+					"sensitive_values": {
+						"condition": [],
+					},
+					"type": "google_kms_crypto_key_iam_member",
+					"values": {
+						"condition": [],
+						"member":    "serviceAccount:service-680501254856@gs-project-accounts.iam.gserviceaccount.com",
+						"role":      "roles/cloudkms.cryptoKeyEncrypter",
+					},
+				},
+				{
+					"address":        "google_project_iam_binding.dataproc",
+					"mode":           "managed",
+					"name":           "dataproc",
+					"provider_name":  "registry.terraform.io/hashicorp/google",
+					"schema_version": 0,
+					"sensitive_values": {
+						"condition": [],
+						"members":   [],
+					},
+					"type": "google_project_iam_binding",
+					"values": {
+						"condition": [],
+						"project":   "test-project",
+						"role":      "roles/compute.networkUser",
+					},
+				},
+				{
+					"address":        "google_project_iam_member.dataproc_workers",
+					"mode":           "managed",
+					"name":           "dataproc_workers",
+					"provider_name":  "registry.terraform.io/hashicorp/google",
+					"schema_version": 0,
+					"sensitive_values": {
+						"condition": [],
+					},
+					"type": "google_project_iam_member",
+					"values": {
+						"condition": [],
+						"project":   "projects/test-project",
+						"role":      "roles/dataproc.worker",
+					},
+				},
+				{
+					"address":        "google_project_iam_member.dataproc_workers1",
+					"mode":           "managed",
+					"name":           "dataproc_workers1",
+					"provider_name":  "registry.terraform.io/hashicorp/google",
+					"schema_version": 0,
+					"sensitive_values": {
+						"condition": [],
+					},
+					"type": "google_project_iam_member",
+					"values": {
+						"condition": [],
+						"project":   "projects/test-project",
+						"role":      "roles/logging.logWriter",
+					},
+				},
+				{
+					"address":          "google_service_account.dataproc_sa",
+					"mode":             "managed",
+					"name":             "dataproc_sa",
+					"provider_name":    "registry.terraform.io/hashicorp/google",
+					"schema_version":   0,
+					"sensitive_values": {},
+					"type":             "google_service_account",
+					"values": {
+						"account_id":   "my-dev-appid-sa-demo-dataproc",
+						"description":  null,
+						"disabled":     false,
+						"display_name": "DataProc Service Account",
+						"project":      "test-project",
+						"timeouts":     null,
+					},
+				},
+				{
+					"address":          "google_service_account.example",
+					"mode":             "managed",
+					"name":             "example",
+					"provider_name":    "registry.terraform.io/hashicorp/google",
+					"schema_version":   0,
+					"sensitive_values": {},
+					"type":             "google_service_account",
+					"values": {
+						"account_id":   "my-dev-appid-sa-demo-function",
+						"description":  null,
+						"disabled":     false,
+						"display_name": "Function Example Service Account",
+						"project":      "test-project",
+						"timeouts":     null,
+					},
+				},
+				{
+					"address":        "google_storage_bucket.bucket",
+					"mode":           "managed",
+					"name":           "bucket",
+					"provider_name":  "registry.terraform.io/hashicorp/google",
+					"schema_version": 0,
+					"sensitive_values": {
+						"cors":             [],
+						"encryption":       [],
+						"lifecycle_rule":   [],
+						"logging":          [],
+						"retention_policy": [],
+						"versioning":       [],
+						"website":          [],
+					},
+					"type": "google_storage_bucket",
+					"values": {
+						"cors": [],
+						"default_event_based_hold": null,
+						"encryption":               [],
+						"force_destroy":            false,
+						"labels":                   null,
+						"lifecycle_rule":           [],
+						"location":                 "US",
+						"logging":                  [],
+						"name":                     "my-dev-appid-system-demo-gcsbucke",
+						"requester_pays":           null,
+						"retention_policy":         [],
+						"storage_class":            "STANDARD",
+						"versioning":               [],
+						"website":                  [],
+					},
+				},
+				{
+					"address":        "google_storage_bucket_object.archive",
+					"mode":           "managed",
+					"name":           "archive",
+					"provider_name":  "registry.terraform.io/hashicorp/google",
+					"schema_version": 0,
+					"sensitive_values": {
+						"customer_encryption": [],
+					},
+					"type": "google_storage_bucket_object",
+					"values": {
+						"bucket":              "my-dev-appid-system-demo-gcsbucke",
+						"cache_control":       null,
+						"content":             "REDACTED_SENSITIVE",
+						"content_disposition": null,
+						"content_encoding":    null,
+						"content_language":    null,
+						"customer_encryption": [],
+						"detect_md5hash":      "different hash",
+						"event_based_hold":    null,
+						"metadata":            null,
+						"name":                "my-dev-appid-system-demo-gcsbucketobject",
+						"source":              "./main.zip",
+						"temporary_hold":      null,
+						"timeouts":            null,
+					},
+				},
+				{
+					"address":          "google_vpc_access_connector.vpc_conn_example",
+					"mode":             "managed",
+					"name":             "vpc_conn_example",
+					"provider_name":    "registry.terraform.io/hashicorp/google",
+					"schema_version":   0,
+					"sensitive_values": {},
+					"type":             "google_vpc_access_connector",
+					"values": {
+						"ip_cidr_range":  "10.8.0.0/28",
+						"max_throughput": 300,
+						"min_throughput": 200,
+						"name":           "my-dev-appid-vc-demo-function",
+						"network":        "us-dev-appid-syst-demo-vpc",
+						"timeouts":       null,
+					},
+				},
+			],
+		},
+	},
+	"prior_state": {
+		"format_version":    "0.2",
+		"terraform_version": "1.0.11",
+		"values": {
+			"root_module": {
+				"resources": [
+					{
+						"address":        "data.google_project.project",
+						"mode":           "data",
+						"name":           "project",
+						"provider_name":  "registry.terraform.io/hashicorp/google",
+						"schema_version": 0,
+						"sensitive_values": {
+							"labels": {},
+						},
+						"type": "google_project",
+						"values": {
+							"auto_create_network": null,
+							"billing_account":     "0177CD-5981DE-50612E",
+							"folder_id":           "299940155397",
+							"id":                  "projects/test-project",
+							"labels":              {},
+							"name":                "test-project",
+							"number":              "680501254856",
+							"org_id":              "",
+							"project_id":          "test-project",
+							"skip_delete":         null,
+						},
+					},
+					{
+						"address":          "data.google_storage_project_service_account.gcss_sa",
+						"mode":             "data",
+						"name":             "gcss_sa",
+						"provider_name":    "registry.terraform.io/hashicorp/google",
+						"schema_version":   0,
+						"sensitive_values": {},
+						"type":             "google_storage_project_service_account",
+						"values": {
+							"email_address": "service-680501254856@gs-project-accounts.iam.gserviceaccount.com",
+							"id":            "service-680501254856@gs-project-accounts.iam.gserviceaccount.com",
+							"project":       "test-project",
+							"user_project":  null,
+						},
+					},
+				],
+			},
+		},
+	},
+	"resource_changes": [
+		{
+			"address": "google_cloudfunctions_function.function",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"available_memory_mb":         128,
+					"build_environment_variables": null,
+					"description":                 "My function",
+					"entry_point":                 "hello_world",
+					"environment_variables": {
+						"GOOGLE_FUNCTION_SOURCE": "main.py",
+						"MY_ENV_VAR":             "my-env-var-value",
+					},
+					"ingress_settings": "ALLOW_ALL",
+					"labels": {
+						"my-label": "my-label-value",
+					},
+					"max_instances":         0,
+					"name":                  "my-dev-appid-system-demo-function",
+					"runtime":               "python39",
+					"source_archive_bucket": "my-dev-appid-system-demo-gcsbucke",
+					"source_archive_object": "my-dev-appid-system-demo-gcsbucketobject",
+					"source_repository":     [],
+					"timeout":               60,
+					"timeouts":              null,
+					"trigger_http":          true,
+					"vpc_connector":         null,
+				},
+				"after_sensitive": {
+					"environment_variables": {},
+					"event_trigger":         [],
+					"labels":                {},
+					"source_repository":     [],
+				},
+				"after_unknown": {
+					"environment_variables":         {},
+					"event_trigger":                 true,
+					"https_trigger_url":             true,
+					"id":                            true,
+					"labels":                        {},
+					"project":                       true,
+					"region":                        true,
+					"service_account_email":         true,
+					"source_repository":             [],
+					"vpc_connector_egress_settings": true,
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "function",
+			"provider_name": "registry.terraform.io/hashicorp/google",
+			"type":          "google_cloudfunctions_function",
+		},
+		{
+			"address": "google_cloudfunctions_function_iam_member.invoker",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"cloud_function": "my-dev-appid-system-demo-function",
+					"condition":      [],
+					"member":         "serviceAccount:service-sa@appspot.gserviceaccount.com",
+					"role":           "roles/cloudfunctions.invoker",
+				},
+				"after_sensitive": {
+					"condition": [],
+				},
+				"after_unknown": {
+					"condition": [],
+					"etag":      true,
+					"id":        true,
+					"project":   true,
+					"region":    true,
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "invoker",
+			"provider_name": "registry.terraform.io/hashicorp/google",
+			"type":          "google_cloudfunctions_function_iam_member",
+		},
+		{
+			"address": "google_compute_firewall.dataproc",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"allow": [
+						{
+							"ports":    [],
+							"protocol": "icmp",
+						},
+						{
+							"ports":    [],
+							"protocol": "tcp",
+						},
+						{
+							"ports":    [],
+							"protocol": "udp",
+						},
+					],
+					"deny":                    [],
+					"description":             "Enable Dataproc master and nodes connectivity",
+					"disabled":                null,
+					"log_config":              [],
+					"name":                    "allow-tcp-udp-icmp-dataprocdemo-fw",
+					"network":                 "projects/test-project/regions/us-central1/networks/us-dev-appid-syst-demo-vpc",
+					"priority":                1000,
+					"project":                 "test-project",
+					"source_ranges":           null,
+					"source_service_accounts": null,
+					"source_tags": [
+						"dataproc-source",
+					],
+					"target_service_accounts": null,
+					"target_tags": [
+						"dataproc-target",
+					],
+					"timeouts": null,
+				},
+				"after_sensitive": {
+					"allow": [
+						{
+							"ports": [],
+						},
+						{
+							"ports": [],
+						},
+						{
+							"ports": [],
+						},
+					],
+					"deny":               [],
+					"destination_ranges": [],
+					"log_config":         [],
+					"source_tags": [
+						false,
+					],
+					"target_tags": [
+						false,
+					],
+				},
+				"after_unknown": {
+					"allow": [
+						{
+							"ports": [],
+						},
+						{
+							"ports": [],
+						},
+						{
+							"ports": [],
+						},
+					],
+					"creation_timestamp": true,
+					"deny":               [],
+					"destination_ranges": true,
+					"direction":          true,
+					"enable_logging":     true,
+					"id":                 true,
+					"log_config":         [],
+					"self_link":          true,
+					"source_tags": [
+						false,
+					],
+					"target_tags": [
+						false,
+					],
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "dataproc",
+			"provider_name": "registry.terraform.io/hashicorp/google",
+			"type":          "google_compute_firewall",
+		},
+		{
+			"address": "google_dataproc_cluster.example",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"cluster_config": [
+						{
+							"autoscaling_config": [],
+							"encryption_config": [
+								{},
+							],
+							"endpoint_config": [
+								{
+									"enable_http_port_access": false,
+								},
+							],
+							"gce_cluster_config": [
+								{
+									"internal_ip_only": true,
+									"metadata":         null,
+									"service_account":  null,
+									"service_account_scopes": [
+										"https://www.googleapis.com/auth/cloud-platform",
+									],
+									"subnetwork": "projects/test-project/regions/us-central1/subnetworks/us-dev-appid-syst-demo-subnet",
+									"tags": [
+										"dataproc-tag",
+									],
+								},
+							],
+							"initialization_action": [],
+							"lifecycle_config":      [],
+							"metastore_config":      [],
+							"security_config":       [],
+							"staging_bucket":        null,
+						},
+					],
+					"graceful_decommission_timeout": "0s",
+					"labels": {
+						"application_division": "pci",
+						"application_name":     "app1",
+						"application_role":     "auth",
+						"au":                   "0223092",
+						"created":              "20211124",
+						"environment":          "dev",
+						"gcp_region":           "us",
+						"owner":                "hybridenv",
+					},
+					"name":     "my-dev-appid-strg-dlpdemo-dpcluster",
+					"project":  "test-project",
+					"region":   "us-central1",
+					"timeouts": null,
+				},
+				"after_sensitive": {
+					"cluster_config": [
+						{
+							"autoscaling_config": [],
+							"encryption_config": [
+								{},
+							],
+							"endpoint_config": [
+								{
+									"http_ports": {},
+								},
+							],
+							"gce_cluster_config": [
+								{
+									"service_account_scopes": [
+										false,
+									],
+									"shielded_instance_config": [],
+									"tags": [
+										false,
+									],
+								},
+							],
+							"initialization_action":     [],
+							"lifecycle_config":          [],
+							"master_config":             [],
+							"metastore_config":          [],
+							"preemptible_worker_config": [],
+							"security_config":           [],
+							"software_config":           [],
+							"worker_config":             [],
+						},
+					],
+					"labels": {},
+				},
+				"after_unknown": {
+					"cluster_config": [
+						{
+							"autoscaling_config": [],
+							"bucket":             true,
+							"encryption_config": [
+								{
+									"kms_key_name": true,
+								},
+							],
+							"endpoint_config": [
+								{
+									"http_ports": true,
+								},
+							],
+							"gce_cluster_config": [
+								{
+									"network": true,
+									"service_account_scopes": [
+										false,
+									],
+									"shielded_instance_config": true,
+									"tags": [
+										false,
+									],
+									"zone": true,
+								},
+							],
+							"initialization_action":     [],
+							"lifecycle_config":          [],
+							"master_config":             true,
+							"metastore_config":          [],
+							"preemptible_worker_config": true,
+							"security_config":           [],
+							"software_config":           true,
+							"temp_bucket":               true,
+							"worker_config":             true,
+						},
+					],
+					"id":     true,
+					"labels": {},
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "example",
+			"provider_name": "registry.terraform.io/hashicorp/google-beta",
+			"type":          "google_dataproc_cluster",
+		},
+		{
+			"address": "google_kms_crypto_key.secrets",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"key_ring": "projects/test-project/locations/us/keyRings/savita-keyring-us",
+					"labels": {
+						"application_division": "pci",
+						"application_name":     "app1",
+						"application_role":     "auth",
+						"au":                   "0223092",
+						"created":              "20211124",
+						"environment":          "dev",
+						"gcp_region":           "us",
+						"owner":                "hybridenv",
+					},
+					"name":                          "my-dev-appid-str-demo-key",
+					"purpose":                       "ENCRYPT_DECRYPT",
+					"rotation_period":               null,
+					"skip_initial_version_creation": null,
+					"timeouts":                      null,
+				},
+				"after_sensitive": {
+					"labels":           {},
+					"version_template": [],
+				},
+				"after_unknown": {
+					"destroy_scheduled_duration": true,
+					"id":               true,
+					"import_only":      true,
+					"labels":           {},
+					"version_template": true,
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "secrets",
+			"provider_name": "registry.terraform.io/hashicorp/google",
+			"type":          "google_kms_crypto_key",
+		},
+		{
+			"address": "google_kms_crypto_key_iam_member.dataproc_gce_encryption",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"condition": [],
+					"member":    "serviceAccount:service-680501254856@compute-system.iam.gserviceaccount.com",
+					"role":      "roles/cloudkms.cryptoKeyEncrypter",
+				},
+				"after_sensitive": {
+					"condition": [],
+				},
+				"after_unknown": {
+					"condition":     [],
+					"crypto_key_id": true,
+					"etag":          true,
+					"id":            true,
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "dataproc_gce_encryption",
+			"provider_name": "registry.terraform.io/hashicorp/google",
+			"type":          "google_kms_crypto_key_iam_member",
+		},
+		{
+			"address": "google_kms_crypto_key_iam_member.dataproc_gce_encryption1",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"condition": [],
+					"role":      "roles/cloudkms.cryptoKeyEncrypter",
+				},
+				"after_sensitive": {
+					"condition": [],
+				},
+				"after_unknown": {
+					"condition":     [],
+					"crypto_key_id": true,
+					"etag":          true,
+					"id":            true,
+					"member":        true,
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "dataproc_gce_encryption1",
+			"provider_name": "registry.terraform.io/hashicorp/google",
+			"type":          "google_kms_crypto_key_iam_member",
+		},
+		{
+			"address": "google_kms_crypto_key_iam_member.dataproc_gcs_encryption",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"condition": [],
+					"member":    "serviceAccount:service-680501254856@gs-project-accounts.iam.gserviceaccount.com",
+					"role":      "roles/cloudkms.cryptoKeyEncrypter",
+				},
+				"after_sensitive": {
+					"condition": [],
+				},
+				"after_unknown": {
+					"condition":     [],
+					"crypto_key_id": true,
+					"etag":          true,
+					"id":            true,
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "dataproc_gcs_encryption",
+			"provider_name": "registry.terraform.io/hashicorp/google",
+			"type":          "google_kms_crypto_key_iam_member",
+		},
+		{
+			"address": "google_project_iam_binding.dataproc",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"condition": [],
+					"project":   "test-project",
+					"role":      "roles/compute.networkUser",
+				},
+				"after_sensitive": {
+					"condition": [],
+					"members":   [],
+				},
+				"after_unknown": {
+					"condition": [],
+					"etag":      true,
+					"id":        true,
+					"members":   true,
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "dataproc",
+			"provider_name": "registry.terraform.io/hashicorp/google",
+			"type":          "google_project_iam_binding",
+		},
+		{
+			"address": "google_project_iam_member.dataproc_workers",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"condition": [],
+					"project":   "projects/test-project",
+					"role":      "roles/dataproc.worker",
+				},
+				"after_sensitive": {
+					"condition": [],
+				},
+				"after_unknown": {
+					"condition": [],
+					"etag":      true,
+					"id":        true,
+					"member":    true,
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "dataproc_workers",
+			"provider_name": "registry.terraform.io/hashicorp/google",
+			"type":          "google_project_iam_member",
+		},
+		{
+			"address": "google_project_iam_member.dataproc_workers1",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"condition": [],
+					"project":   "projects/test-project",
+					"role":      "roles/logging.logWriter",
+				},
+				"after_sensitive": {
+					"condition": [],
+				},
+				"after_unknown": {
+					"condition": [],
+					"etag":      true,
+					"id":        true,
+					"member":    true,
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "dataproc_workers1",
+			"provider_name": "registry.terraform.io/hashicorp/google",
+			"type":          "google_project_iam_member",
+		},
+		{
+			"address": "google_service_account.dataproc_sa",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"account_id":   "my-dev-appid-sa-demo-dataproc",
+					"description":  null,
+					"disabled":     false,
+					"display_name": "DataProc Service Account",
+					"project":      "test-project",
+					"timeouts":     null,
+				},
+				"after_sensitive": {},
+				"after_unknown": {
+					"email":     true,
+					"id":        true,
+					"name":      true,
+					"unique_id": true,
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "dataproc_sa",
+			"provider_name": "registry.terraform.io/hashicorp/google",
+			"type":          "google_service_account",
+		},
+		{
+			"address": "google_service_account.example",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"account_id":   "my-dev-appid-sa-demo-function",
+					"description":  null,
+					"disabled":     false,
+					"display_name": "Function Example Service Account",
+					"project":      "test-project",
+					"timeouts":     null,
+				},
+				"after_sensitive": {},
+				"after_unknown": {
+					"email":     true,
+					"id":        true,
+					"name":      true,
+					"unique_id": true,
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "example",
+			"provider_name": "registry.terraform.io/hashicorp/google",
+			"type":          "google_service_account",
+		},
+		{
+			"address": "google_storage_bucket.bucket",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"cors": [],
+					"default_event_based_hold": null,
+					"encryption":               [],
+					"force_destroy":            false,
+					"labels":                   null,
+					"lifecycle_rule":           [],
+					"location":                 "US",
+					"logging":                  [],
+					"name":                     "my-dev-appid-system-demo-gcsbucke",
+					"requester_pays":           null,
+					"retention_policy":         [],
+					"storage_class":            "STANDARD",
+					"versioning":               [],
+					"website":                  [],
+				},
+				"after_sensitive": {
+					"cors":             [],
+					"encryption":       [],
+					"lifecycle_rule":   [],
+					"logging":          [],
+					"retention_policy": [],
+					"versioning":       [],
+					"website":          [],
+				},
+				"after_unknown": {
+					"cors":                        [],
+					"encryption":                  [],
+					"id":                          true,
+					"lifecycle_rule":              [],
+					"logging":                     [],
+					"project":                     true,
+					"retention_policy":            [],
+					"self_link":                   true,
+					"uniform_bucket_level_access": true,
+					"url":        true,
+					"versioning": [],
+					"website":    [],
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "bucket",
+			"provider_name": "registry.terraform.io/hashicorp/google",
+			"type":          "google_storage_bucket",
+		},
+		{
+			"address": "google_storage_bucket_object.archive",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"bucket":              "my-dev-appid-system-demo-gcsbucke",
+					"cache_control":       null,
+					"content":             "REDACTED_SENSITIVE",
+					"content_disposition": null,
+					"content_encoding":    null,
+					"content_language":    null,
+					"customer_encryption": [],
+					"detect_md5hash":      "different hash",
+					"event_based_hold":    null,
+					"metadata":            null,
+					"name":                "my-dev-appid-system-demo-gcsbucketobject",
+					"source":              "./main.zip",
+					"temporary_hold":      null,
+					"timeouts":            null,
+				},
+				"after_sensitive": {
+					"content":             true,
+					"customer_encryption": [],
+				},
+				"after_unknown": {
+					"content_type":        true,
+					"crc32c":              true,
+					"customer_encryption": [],
+					"id":            true,
+					"kms_key_name":  true,
+					"md5hash":       true,
+					"media_link":    true,
+					"output_name":   true,
+					"self_link":     true,
+					"storage_class": true,
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "archive",
+			"provider_name": "registry.terraform.io/hashicorp/google",
+			"type":          "google_storage_bucket_object",
+		},
+		{
+			"address": "google_vpc_access_connector.vpc_conn_example",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"ip_cidr_range":  "10.8.0.0/28",
+					"max_throughput": 300,
+					"min_throughput": 200,
+					"name":           "my-dev-appid-vc-demo-function",
+					"network":        "us-dev-appid-syst-demo-vpc",
+					"timeouts":       null,
+				},
+				"after_sensitive": {},
+				"after_unknown": {
+					"id":        true,
+					"project":   true,
+					"region":    true,
+					"self_link": true,
+					"state":     true,
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "vpc_conn_example",
+			"provider_name": "registry.terraform.io/hashicorp/google",
+			"type":          "google_vpc_access_connector",
+		},
+	],
+	"terraform_version": "1.0.11",
+	"variables": {
+		"access_token": {
+			"value": "REDACTED_SENSITIVE",
+		},
+	},
+}

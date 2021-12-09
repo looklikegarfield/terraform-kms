@@ -1,0 +1,10 @@
+{
+	"records": [
+		{
+			"key": "threat_gcp_kms_enforce",
+			"source": "./threat_gcp_kms_enforce.sentinel",
+			"sourceSum": "",
+			"dest": "/home/tiwarabhishek/terraform-kms/threat_gcp_kms_enforce.sentinel"
+		}
+	]
+}

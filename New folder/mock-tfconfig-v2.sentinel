@@ -1,0 +1,290 @@
+import "strings"
+
+providers = {
+	"google": {
+		"alias": "",
+		"config": {
+			"access_token": {
+				"references": [
+					"var.access_token",
+				],
+			},
+			"project": {
+				"references": [
+					"var.project_id",
+				],
+			},
+			"region": {
+				"constant_value": "us-west2",
+			},
+		},
+		"module_address":      "",
+		"name":                "google",
+		"provider_config_key": "google",
+		"version_constraint":  "~> 3.87.0",
+	},
+}
+
+resources = {
+	"google_kms_crypto_key.example-key": {
+		"address": "google_kms_crypto_key.example-key",
+		"config": {
+			"import_only": {
+				"constant_value": true,
+			},
+			"key_ring": {
+				"references": [
+					"google_kms_key_ring.keyring.id",
+					"google_kms_key_ring.keyring",
+				],
+			},
+			"labels": {
+				"constant_value": {
+					"application_division": "paa",
+					"application_name":     "demo",
+					"application_role":     "app",
+					"au":                   "0223092",
+					"created":              "20211124",
+					"data_compliance":      "pci",
+					"data_confidentiality": "pub",
+					"data_type":            "test",
+					"env":                  "dev",
+					"environment":          "dev",
+					"gcp_region":           "us",
+					"owner":                "hybridenv",
+				},
+			},
+			"name": {
+				"references": [
+					"var.keyring_key_name",
+				],
+			},
+			"rotation_period": {
+				"constant_value": "7776000s",
+			},
+			"skip_initial_version_creation": {
+				"constant_value": true,
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "example-key",
+		"provider_config_key": "google",
+		"provisioners":        [],
+		"type":                "google_kms_crypto_key",
+	},
+	"google_kms_key_ring.keyring": {
+		"address": "google_kms_key_ring.keyring",
+		"config": {
+			"location": {
+				"references": [
+					"var.keyring_location",
+				],
+			},
+			"name": {
+				"references": [
+					"var.keyring_name",
+				],
+			},
+			"project": {
+				"references": [
+					"var.project",
+				],
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "keyring",
+		"provider_config_key": "google",
+		"provisioners":        [],
+		"type":                "google_kms_key_ring",
+	},
+	"google_kms_key_ring_import_job.import-job": {
+		"address": "google_kms_key_ring_import_job.import-job",
+		"config": {
+			"import_job_id": {
+				"references": [
+					"var.keyring_import_job",
+				],
+			},
+			"import_method": {
+				"constant_value": "RSA_OAEP_3072_SHA1_AES_256",
+			},
+			"key_ring": {
+				"references": [
+					"google_kms_key_ring.keyring.id",
+					"google_kms_key_ring.keyring",
+				],
+			},
+			"protection_level": {
+				"constant_value": "SOFTWARE",
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "import-job",
+		"provider_config_key": "google",
+		"provisioners":        [],
+		"type":                "google_kms_key_ring_import_job",
+	},
+	"null_resource.import": {
+		"address":             "null_resource.import",
+		"config":              {},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "import",
+		"provider_config_key": "null",
+		"provisioners": [
+			{
+				"config": {
+					"command": {
+						"references": [
+							"var.keyring_import_job",
+							"var.keyring_location",
+							"var.keyring_name",
+							"var.keyring_key_name",
+							"var.key_path",
+						],
+					},
+				},
+				"index":            0,
+				"resource_address": "null_resource.import",
+				"type":             "local-exec",
+			},
+		],
+		"type": "null_resource",
+	},
+	"null_resource.proto_descriptor": {
+		"address":             "null_resource.proto_descriptor",
+		"config":              {},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "proto_descriptor",
+		"provider_config_key": "null",
+		"provisioners": [
+			{
+				"config": {
+					"command": {
+						"references": [
+							"var.key_path",
+						],
+					},
+				},
+				"index":            0,
+				"resource_address": "null_resource.proto_descriptor",
+				"type":             "local-exec",
+			},
+		],
+		"type": "null_resource",
+	},
+}
+
+provisioners = {
+	"null_resource.import:0": {
+		"config": {
+			"command": {
+				"references": [
+					"var.keyring_import_job",
+					"var.keyring_location",
+					"var.keyring_name",
+					"var.keyring_key_name",
+					"var.key_path",
+				],
+			},
+		},
+		"index":            0,
+		"resource_address": "null_resource.import",
+		"type":             "local-exec",
+	},
+	"null_resource.proto_descriptor:0": {
+		"config": {
+			"command": {
+				"references": [
+					"var.key_path",
+				],
+			},
+		},
+		"index":            0,
+		"resource_address": "null_resource.proto_descriptor",
+		"type":             "local-exec",
+	},
+}
+
+variables = {
+	"access_token": {
+		"default":        null,
+		"description":    "",
+		"module_address": "",
+		"name":           "access_token",
+	},
+	"key_path": {
+		"default":        "/tmp",
+		"description":    "",
+		"module_address": "",
+		"name":           "key_path",
+	},
+	"keyring_import_job": {
+		"default":        "my-import-job",
+		"description":    "",
+		"module_address": "",
+		"name":           "keyring_import_job",
+	},
+	"keyring_key_name": {
+		"default":        "us-dev-appid-encr-test1-cryptokey",
+		"description":    "",
+		"module_address": "",
+		"name":           "keyring_key_name",
+	},
+	"keyring_location": {
+		"default":        "us",
+		"description":    "",
+		"module_address": "",
+		"name":           "keyring_location",
+	},
+	"keyring_name": {
+		"default":        "us-dev-appid-encr-test1-keyring",
+		"description":    "",
+		"module_address": "",
+		"name":           "keyring_name",
+	},
+	"project": {
+		"default":        "airline1-sabre-wolverine",
+		"description":    "",
+		"module_address": "",
+		"name":           "project",
+	},
+	"project_id": {
+		"default":        null,
+		"description":    "",
+		"module_address": "",
+		"name":           "project_id",
+	},
+}
+
+outputs = {}
+
+module_calls = {}
+
+strip_index = func(addr) {
+	s = strings.split(addr, ".")
+	for s as i, v {
+		s[i] = strings.split(v, "[")[0]
+	}
+
+	return strings.join(s, ".")
+}

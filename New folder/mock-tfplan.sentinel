@@ -1,0 +1,363 @@
+import "strings"
+import "types"
+
+_modules = {
+	"root": {
+		"data": {},
+		"path": [],
+		"resources": {
+			"google_kms_crypto_key": {
+				"example-key": {
+					0: {
+						"applied": {
+							"import_only": true,
+							"labels": {
+								"application_division": "paa",
+								"application_name":     "demo",
+								"application_role":     "app",
+								"au":                   "0223092",
+								"created":              "20211124",
+								"data_compliance":      "pci",
+								"data_confidentiality": "pub",
+								"data_type":            "test",
+								"env":                  "dev",
+								"environment":          "dev",
+								"gcp_region":           "us",
+								"owner":                "hybridenv",
+							},
+							"name":                          "us-dev-appid-encr-test1-cryptokey",
+							"purpose":                       "ENCRYPT_DECRYPT",
+							"rotation_period":               "7776000s",
+							"skip_initial_version_creation": true,
+							"timeouts":                      null,
+						},
+						"destroy": false,
+						"diff": {
+							"destroy_scheduled_duration": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"id": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"import_only": {
+								"computed": false,
+								"new":      "true",
+								"old":      "",
+							},
+							"key_ring": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"labels.%": {
+								"computed": false,
+								"new":      "12",
+								"old":      "",
+							},
+							"labels.application_division": {
+								"computed": false,
+								"new":      "paa",
+								"old":      "",
+							},
+							"labels.application_name": {
+								"computed": false,
+								"new":      "demo",
+								"old":      "",
+							},
+							"labels.application_role": {
+								"computed": false,
+								"new":      "app",
+								"old":      "",
+							},
+							"labels.au": {
+								"computed": false,
+								"new":      "0223092",
+								"old":      "",
+							},
+							"labels.created": {
+								"computed": false,
+								"new":      "20211124",
+								"old":      "",
+							},
+							"labels.data_compliance": {
+								"computed": false,
+								"new":      "pci",
+								"old":      "",
+							},
+							"labels.data_confidentiality": {
+								"computed": false,
+								"new":      "pub",
+								"old":      "",
+							},
+							"labels.data_type": {
+								"computed": false,
+								"new":      "test",
+								"old":      "",
+							},
+							"labels.env": {
+								"computed": false,
+								"new":      "dev",
+								"old":      "",
+							},
+							"labels.environment": {
+								"computed": false,
+								"new":      "dev",
+								"old":      "",
+							},
+							"labels.gcp_region": {
+								"computed": false,
+								"new":      "us",
+								"old":      "",
+							},
+							"labels.owner": {
+								"computed": false,
+								"new":      "hybridenv",
+								"old":      "",
+							},
+							"name": {
+								"computed": false,
+								"new":      "us-dev-appid-encr-test1-cryptokey",
+								"old":      "",
+							},
+							"purpose": {
+								"computed": false,
+								"new":      "ENCRYPT_DECRYPT",
+								"old":      "",
+							},
+							"rotation_period": {
+								"computed": false,
+								"new":      "7776000s",
+								"old":      "",
+							},
+							"self_link": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"skip_initial_version_creation": {
+								"computed": false,
+								"new":      "true",
+								"old":      "",
+							},
+							"timeouts": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"version_template.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+						},
+						"requires_new": false,
+					},
+				},
+			},
+			"google_kms_key_ring": {
+				"keyring": {
+					0: {
+						"applied": {
+							"location": "us",
+							"name":     "us-dev-appid-encr-test1-keyring",
+							"project":  "airline1-sabre-wolverine",
+							"timeouts": null,
+						},
+						"destroy": false,
+						"diff": {
+							"id": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"location": {
+								"computed": false,
+								"new":      "us",
+								"old":      "",
+							},
+							"name": {
+								"computed": false,
+								"new":      "us-dev-appid-encr-test1-keyring",
+								"old":      "",
+							},
+							"project": {
+								"computed": false,
+								"new":      "airline1-sabre-wolverine",
+								"old":      "",
+							},
+							"self_link": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"timeouts": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+						},
+						"requires_new": false,
+					},
+				},
+			},
+			"google_kms_key_ring_import_job": {
+				"import-job": {
+					0: {
+						"applied": {
+							"import_job_id":    "my-import-job",
+							"import_method":    "RSA_OAEP_3072_SHA1_AES_256",
+							"protection_level": "SOFTWARE",
+							"timeouts":         null,
+						},
+						"destroy": false,
+						"diff": {
+							"attestation.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"expire_time": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"id": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"import_job_id": {
+								"computed": false,
+								"new":      "my-import-job",
+								"old":      "",
+							},
+							"import_method": {
+								"computed": false,
+								"new":      "RSA_OAEP_3072_SHA1_AES_256",
+								"old":      "",
+							},
+							"key_ring": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"name": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"protection_level": {
+								"computed": false,
+								"new":      "SOFTWARE",
+								"old":      "",
+							},
+							"public_key.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"state": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"timeouts": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+						},
+						"requires_new": false,
+					},
+				},
+			},
+			"null_resource": {
+				"import": {
+					0: {
+						"applied": {
+							"triggers": null,
+						},
+						"destroy": false,
+						"diff": {
+							"id": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"triggers": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+						},
+						"requires_new": false,
+					},
+				},
+				"proto_descriptor": {
+					0: {
+						"applied": {
+							"triggers": null,
+						},
+						"destroy": false,
+						"diff": {
+							"id": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"triggers": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+						},
+						"requires_new": false,
+					},
+				},
+			},
+		},
+	},
+}
+
+module_paths = [
+	[],
+]
+
+terraform_version = "1.0.11"
+
+variables = {
+	"access_token":       "REDACTED_SENSITIVE",
+	"key_path":           "/tmp",
+	"keyring_import_job": "my-import-job",
+	"keyring_key_name":   "us-dev-appid-encr-test1-cryptokey",
+	"keyring_location":   "us",
+	"keyring_name":       "us-dev-appid-encr-test1-keyring",
+	"project":            "airline1-sabre-wolverine",
+	"project_id":         "REDACTED_SENSITIVE",
+}
+
+module = func(path) {
+	if types.type_of(path) is not "list" {
+		error("expected list, got", types.type_of(path))
+	}
+
+	if length(path) < 1 {
+		return _modules.root
+	}
+
+	addr = []
+	for path as p {
+		append(addr, "module")
+		append(addr, p)
+	}
+
+	return _modules[strings.join(addr, ".")]
+}
+
+data = _modules.root.data
+path = _modules.root.path
+resources = _modules.root.resources
