@@ -11,7 +11,7 @@ variable "project" {
 }
 
 variable "keyring_name" {
-  default = "us-dev-appid-encr-test1-keyring"
+  default = "us-dev-appid-encr-test2-keyring2"
 }
 
 variable "keyring_location" {
@@ -19,7 +19,7 @@ variable "keyring_location" {
 }
 
 variable "keyring_key_name" {
-  default = "us-dev-appid-encr-test1-cryptokey"
+  default = "us-dev-appid-encr-test2-cryptokey2"
 }
 
 variable "keyring_import_job" {
