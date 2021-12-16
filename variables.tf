@@ -11,7 +11,7 @@ variable "project" {
 }
 
 variable "keyring_name" {
-  default = "us-dev-appid-encr-test2-keyring2"
+  default = "wf-us-nonprod-kms-app01-res123"
 }
 
 variable "keyring_location" {
@@ -19,7 +19,7 @@ variable "keyring_location" {
 }
 
 variable "keyring_key_name" {
-  default = "us-dev-appid-encr-test2-cryptokey2"
+  default = "wf-us-nonprod-crypto-app01-res123" #cryptokey"
 }
 
 variable "keyring_import_job" {
